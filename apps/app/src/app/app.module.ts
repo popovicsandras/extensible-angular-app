@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
+import { MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
     BrowserModule,
+    MatSidenavModule,
     RouterModule.forRoot(
       [
         {
@@ -23,6 +25,9 @@ import { RouterModule } from '@angular/router';
       ],
       { initialNavigation: 'enabledBlocking' }
     ),
+  ],
+  exports: [
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent],
