@@ -1,6 +1,9 @@
 import { Component, Inject, ViewChild } from '@angular/core';
-import { ApplicationSlotService, ApplicationSlotServiceToken } from '../shared/application-slot.service';
-import { AppSlotDirective } from '../shared/slot.directive';
+import {
+  ApplicationSlotService,
+  ApplicationSlotServiceToken,
+  AppSlotDirective
+} from '@extensible-angular-app/sdk';
 import { AppTemplateComponent } from '../template/template.component';
 import { MenuComponent } from './menu.component';
 

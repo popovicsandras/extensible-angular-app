@@ -1,7 +1,8 @@
-import { Injectable, InjectionToken, Type } from "@angular/core";
+import { Injectable, Type } from "@angular/core";
+import { ApplicationSlotService } from "@extensible-angular-app/sdk";
 
 @Injectable()
-export class ApplicationSlotService {
+export class ApplicationSlotServiceImpl implements ApplicationSlotService {
 
   private slots = {} as { [key: string]: Type<any>};
 
@@ -17,5 +18,3 @@ export class ApplicationSlotService {
     return !!this.slots[slot];
   }
 }
-
-export const ApplicationSlotServiceToken = new InjectionToken<ApplicationSlotService>('application-slot-service');

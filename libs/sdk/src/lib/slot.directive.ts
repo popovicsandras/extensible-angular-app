@@ -1,5 +1,5 @@
 import { Directive, Inject, Input, OnInit, ViewContainerRef } from '@angular/core';
-import { ApplicationSlotService, ApplicationSlotServiceToken } from './application-slot.service';
+import { ApplicationSlotService, ApplicationSlotServiceToken } from './application-slot.interfaces';
 
 @Directive({
   // eslint-disable-next-line

@@ -7,9 +7,9 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule} from '@angular/material/sidenav';
 import { AppTemplateComponent } from '../template/template.component';
-import { AppSlotDirective } from '../shared/slot.directive';
-import { ApplicationSlotService, ApplicationSlotServiceToken } from '../shared/application-slot.service';
+import { ApplicationSlotServiceImpl } from './services/application-slot.service';
 import { MenuComponent } from './menu.component';
+import { ApplicationSlotServiceToken, AppSlotDirective } from '@extensible-angular-app/sdk';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent, MenuComponent, AppSlotDirective, AppTemplateComponent],
@@ -36,7 +36,7 @@ import { MenuComponent } from './menu.component';
     MatSidenavModule
   ],
   providers: [
-    { provide: ApplicationSlotServiceToken, useClass: ApplicationSlotService }
+    { provide: ApplicationSlotServiceToken, useClass: ApplicationSlotServiceImpl }
   ],
   bootstrap: [AppComponent],
 })

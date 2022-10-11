@@ -1,0 +1,9 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "sdk",
+  "projectType": "library",
+  "sourceRoot": "libs/sdk/src",
+  "prefix": "extensible-app",
+  "targets": {},
+  "tags": []
+}
