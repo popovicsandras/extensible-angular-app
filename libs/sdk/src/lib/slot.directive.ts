@@ -29,7 +29,7 @@ export class AppSlotDirective implements OnInit {
     viewContainerRef.clear();
 
     const componentClass = this.applicationSlotService.get(slotName);
-    viewContainerRef.createComponent<typeof componentClass>(componentClass);
+    componentClass && viewContainerRef.createComponent<typeof componentClass>(componentClass);
   }
 
   get name() {
