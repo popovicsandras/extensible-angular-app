@@ -5,14 +5,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
-// import { MatSidenavModule} from '@angular/material/sidenav';
+import { MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    // MatSidenavModule,
+    MatSidenavModule,
     RouterModule.forRoot(
       [
         {
@@ -29,7 +29,7 @@ import { RouterModule } from '@angular/router';
     ),
   ],
   exports: [
-    // MatSidenavModule
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent],
