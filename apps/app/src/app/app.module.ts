@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
-import { MatSidenavModule} from '@angular/material/sidenav';
+// import { MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
     BrowserModule,
-    MatSidenavModule,
+    BrowserAnimationsModule,
+    // MatSidenavModule,
     RouterModule.forRoot(
       [
         {
@@ -27,7 +29,7 @@ import { MatSidenavModule} from '@angular/material/sidenav';
     ),
   ],
   exports: [
-    MatSidenavModule
+    // MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent],
