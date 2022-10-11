@@ -6,9 +6,13 @@ import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule} from '@angular/material/sidenav';
+import { AppTemplateComponent } from '../template/template.component';
+import { AppSlotDirective } from '../shared/slot.directive';
+import { ApplicationSlotService, ApplicationSlotServiceToken } from '../shared/application-slot.service';
+import { MenuComponent } from './menu.component';
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
+  declarations: [AppComponent, NxWelcomeComponent, MenuComponent, AppSlotDirective, AppTemplateComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -31,7 +35,9 @@ import { MatSidenavModule} from '@angular/material/sidenav';
   exports: [
     MatSidenavModule
   ],
-  providers: [],
+  providers: [
+    { provide: ApplicationSlotServiceToken, useClass: ApplicationSlotService }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
