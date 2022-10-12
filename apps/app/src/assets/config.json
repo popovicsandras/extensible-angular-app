@@ -1,0 +1,9 @@
+[
+  {
+    "remoteEntry": "http://localhost:4200/remoteEntry.js",
+    "remoteName": "template",
+    "exposedModule": "./Template",
+    "displayName": "Template",
+    "componentName": "AppTemplateComponent"
+  }
+]

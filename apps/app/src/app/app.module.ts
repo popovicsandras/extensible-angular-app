@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -7,7 +7,11 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
 import { ApplicationSlotServiceImpl } from './services/application-slot.service';
 import { MenuComponent } from './menu.component';
+
 import { ApplicationSlotServiceToken, AppSlotDirective } from '@extensible-angular-app/sdk';
+import { HttpClientModule } from '@angular/common/http';
+import { ExtensionsLoaderService, loadPluginsFactory } from './services/extensions-loader';
+
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent, MenuComponent],
@@ -15,6 +19,7 @@ import { ApplicationSlotServiceToken, AppSlotDirective } from '@extensible-angul
     AppSlotDirective,
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     RouterModule.forRoot(
       [
         {
@@ -31,7 +36,13 @@ import { ApplicationSlotServiceToken, AppSlotDirective } from '@extensible-angul
     ),
   ],
   providers: [
-    { provide: ApplicationSlotServiceToken, useClass: ApplicationSlotServiceImpl }
+    { provide: ApplicationSlotServiceToken, useClass: ApplicationSlotServiceImpl },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: loadPluginsFactory,
+      multi: true,
+      deps: [ ExtensionsLoaderService ]
+    }
   ],
   bootstrap: [AppComponent],
 })
