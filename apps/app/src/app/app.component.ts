@@ -1,21 +1,26 @@
-import { Component, Inject, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import {
   ApplicationSlotService,
   ApplicationSlotServiceToken,
   AppSlotDirective
 } from '@extensible-angular-app/sdk';
-import { AppTemplateComponent } from '../template/template.component';
+import { DefaultAppTemplateComponent } from '../default-template/default-template.component';
 import { MenuComponent } from './menu.component';
 
 @Component({
   selector: 'extensible-app-root',
   template: `<ng-template slot="template"></ng-template>`,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   @ViewChild(AppSlotDirective, {static: true}) slot!: AppSlotDirective;
 
   constructor(@Inject(ApplicationSlotServiceToken) private applicationSlotService: ApplicationSlotService) {
-    this.applicationSlotService.set('template', AppTemplateComponent);
+  }
+
+  ngOnInit() {
+    if (!this.applicationSlotService.has('template')) {
+      this.applicationSlotService.set('template', DefaultAppTemplateComponent);
+    }
     this.applicationSlotService.set('menu', MenuComponent);
   }
 }

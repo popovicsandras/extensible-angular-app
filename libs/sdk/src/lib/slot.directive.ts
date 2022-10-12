@@ -1,4 +1,4 @@
-import { Directive, Inject, Input, OnInit, ViewContainerRef } from '@angular/core';
+import { Directive, Inject, Input, OnInit, Optional, ViewContainerRef } from '@angular/core';
 import { ApplicationSlotService, ApplicationSlotServiceToken } from './application-slot.interfaces';
 
 @Directive({
@@ -12,9 +12,7 @@ export class AppSlotDirective implements OnInit {
   constructor(
     public viewContainerRef: ViewContainerRef,
     @Inject(ApplicationSlotServiceToken) private applicationSlotService: ApplicationSlotService
-  ) {
-    console.log(this.slot);
-  }
+  ) {}
 
   ngOnInit(): void {
     if (!this.applicationSlotService.has(this.slot)) {
