@@ -2,6 +2,7 @@ import { Directive, Inject, Input, OnInit, ViewContainerRef } from '@angular/cor
 import { ApplicationSlotService, ApplicationSlotServiceToken } from './application-slot.interfaces';
 
 @Directive({
+  standalone: true,
   // eslint-disable-next-line
   selector: '[slot]',
 })
