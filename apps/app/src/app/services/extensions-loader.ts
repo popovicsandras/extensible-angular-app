@@ -34,7 +34,11 @@ export class ExtensionsLoaderService {
         exposedModule: config.template.exposedModule
       });
 
-      this.applicationSlotService.set('template', module[config.template.componentName]);
+      this.applicationSlotService.set(
+        'template',
+        module[config.template.componentName],
+        config.template.options
+      );
     }
    }
 }

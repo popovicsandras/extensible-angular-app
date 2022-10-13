@@ -3,17 +3,12 @@
     "displayName": "Template",
     "remoteEntry": "http://localhost:4202/remoteEntry.mjs",
     "exposedModule": "./Template",
-    "componentName": "AppTemplateComponent"
+    "componentName": "AppTemplateComponent",
+    "options": {
+      "title": "Application with custom template"
+    }
   },
   "widgets": [],
-  "components": [
-    {
-      "remoteEntry": "http://localhost:4202/remoteEntry.mjs",
-      "remoteName": "??",
-      "exposedModule": "??",
-      "displayName": "??",
-      "componentName": "??"
-    }
-  ],
+  "components": [],
   "plugins": []
 }

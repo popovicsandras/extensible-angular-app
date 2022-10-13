@@ -1,5 +1,5 @@
 import { Injectable, Type } from "@angular/core";
-import { ApplicationSlotService } from "@extensible-angular-app/sdk";
+import { ApplicationSlotService, SlotRecord } from "@extensible-angular-app/sdk";
 
 @Injectable()
 export class ApplicationSlotServiceImpl implements ApplicationSlotService {
@@ -7,11 +7,14 @@ export class ApplicationSlotServiceImpl implements ApplicationSlotService {
   private slots;
 
   constructor() {
-    this.slots = new Map<string, Type<any>>();
+    this.slots = new Map<string, SlotRecord>();
   }
 
-  set(slot: string, component: Type<any>) {
-    this.slots.set(slot, component);
+  set(slot: string, component: Type<unknown>, options: Record<string, unknown>) {
+    this.slots.set(slot, {
+      component,
+      options
+    });
   }
 
   get(slot: string) {

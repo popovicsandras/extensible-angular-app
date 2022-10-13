@@ -1,0 +1,8 @@
+// map SCSS variables to expose as CSS variables
+:root {
+  --theme-container-max-width: 100%;
+  --theme-text-fg-color: mat.get-color-from-palette($foreground, text);
+  --theme-text-color: mat.get-color-from-palette($foreground, text, 0.54);
+  --theme-text-bold-color: mat.get-color-from-palette($foreground, text, 0.87);
+  --theme-title-color: mat.get-color-from-palette($foreground, text, 0.87);
+}

@@ -75,8 +75,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
       }
 
       .shadow {
-        box-shadow: 0 0 #0000, 0 0 #0000, 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 0 #0000, 0 0 #0000, 0 10px 15px 0 rgba(0, 0, 0, 0.4),
+          0 4px 6px -2px rgba(0, 0, 0, 0.4);
       }
       .rounded {
         border-radius: 1.5rem;
@@ -88,11 +88,11 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
       .container {
         margin-left: auto;
         margin-right: auto;
-        max-width: 768px;
+        max-width: var(--theme-container-max-width);
         padding-bottom: 3rem;
         padding-left: 1rem;
         padding-right: 1rem;
-        color: rgba(55, 65, 81, 1);
+        color: var(--theme-text-fg-color);
         width: 100%;
       }
       #welcome {

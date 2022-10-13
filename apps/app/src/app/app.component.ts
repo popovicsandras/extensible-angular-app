@@ -19,8 +19,16 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     if (!this.applicationSlotService.has('template')) {
-      this.applicationSlotService.set('template', DefaultAppTemplateComponent);
+      this.applicationSlotService.set(
+        'template',
+        DefaultAppTemplateComponent,
+        {}
+      );
     }
-    this.applicationSlotService.set('menu', MenuComponent);
+    this.applicationSlotService.set(
+      'menu',
+      MenuComponent,
+      {}
+    );
   }
 }

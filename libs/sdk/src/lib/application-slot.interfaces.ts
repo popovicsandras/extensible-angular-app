@@ -6,8 +6,13 @@ import { InjectionToken, Type } from "@angular/core";
 // export const ApplicationSlotServiceToken = new InjectionToken<ApplicationSlotService>('application-slot-service');
 export const ApplicationSlotServiceToken = 'application-slot-service';
 
+export interface SlotRecord {
+  component: Type<unknown>;
+  options: Record<string, unknown>;
+}
+
 export interface ApplicationSlotService {
-  set(slot: string, component: Type<any>): void;
-  get(slot: string): Type<any> | undefined;
+  set(slot: string, component: Type<unknown>, options: Record<string, unknown>): void;
+  get(slot: string): SlotRecord | undefined;
   has(slot: string): boolean;
 }
