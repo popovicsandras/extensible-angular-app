@@ -7,7 +7,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/custom-template",
         "index": "apps/custom-template/src/index.html",
@@ -19,7 +21,9 @@
           "apps/custom-template/src/favicon.ico",
           "apps/custom-template/src/assets"
         ],
-        "styles": ["apps/custom-template/src/styles.scss"],
+        "styles": [
+          "apps/custom-template/src/styles.scss"
+        ],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/custom-template/webpack.config.js"
@@ -62,7 +66,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@nrwl/angular:webpack-server",
+      "executor": "@nrwl/angular:webpack-dev-server",
       "configurations": {
         "production": {
           "browserTarget": "custom-template:build:production"
@@ -94,7 +98,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/custom-template"],
+      "outputs": [
+        "{workspaceRoot}/coverage/apps/custom-template"
+      ],
       "options": {
         "jestConfig": "apps/custom-template/jest.config.ts",
         "passWithNoTests": true
