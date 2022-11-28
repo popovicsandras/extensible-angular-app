@@ -29,7 +29,6 @@ export class AppSlotDirective implements OnInit {
 
     const slotDetails = this.applicationSlotService.get(slotName);
     if (slotDetails) {
-      console.log(slotDetails.options)
       const ComponentClass = slotDetails.component;
       const componentRef: any = viewContainerRef.createComponent(ComponentClass);
       Object.keys(slotDetails.options).forEach(key => {

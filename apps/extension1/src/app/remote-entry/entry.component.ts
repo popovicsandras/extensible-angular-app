@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {
   ApplicationSlotService,
   ApplicationSlotServiceToken,
@@ -8,8 +8,10 @@ import {
   selector: 'extensible-app-extension1-entry',
   template: `<extensible-app-nx-welcome></extensible-app-nx-welcome>`,
 })
-export class RemoteEntryComponent {
-  constructor(@Inject(ApplicationSlotServiceToken) private applicationSlotService: ApplicationSlotService) {
+export class RemoteEntryComponent implements OnInit {
+  constructor(@Inject(ApplicationSlotServiceToken) private applicationSlotService: ApplicationSlotService) {}
+
+  ngOnInit() {
     console.log(this.applicationSlotService);
   }
 }
