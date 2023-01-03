@@ -1,9 +1,16 @@
-[x] Being able to provide custom template
-[x] Share services
-[ ] Widgets
-[ ] Routed components
-[ ] Plugins
-[ ] Nextjs market for demoing
-[ ] Trying to use a React component?
-[ ] Trying to use anything else than Material
-[ ] What about different angular version?
+- [x] Being able to provide custom template
+- [x] Share services via injection token from an EDK
+- [ ] Routed components
+  - [ ] As angular modules
+  - [ ] As angular standalone components
+  - [ ] As authenticated user
+  - [ ] As unauthenticated user 
+- [ ] Widgets
+- [ ] System plugins
+- [ ] Dependent extensions (how to define contracts)
+- [ ] Nextjs market for demoing
+- [ ] Trying to use anything else than Material
+- [ ] What about different angular version?
+- [ ] Assembling in compilation time
+- [ ] SSR
+- [ ] Trying to use a React component?

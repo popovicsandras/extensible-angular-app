@@ -8,9 +8,10 @@ import { RouterModule } from '@angular/router';
 import { ApplicationSlotServiceImpl } from './services/application-slot.service';
 import { MenuComponent } from './menu.component';
 
-import { ApplicationSlotServiceToken, AppSlotDirective } from '@extensible-angular-app/sdk';
+import { ApplicationSlotServiceToken, AppSlotDirective, AuthenticationServiceToken } from '@extensible-angular-app/sdk';
 import { HttpClientModule } from '@angular/common/http';
 import { ExtensionsLoaderService, loadPluginsFactory } from './services/extensions-loader';
+import { DefaultAuthenticationService } from './services/authentication.service';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { ExtensionsLoaderService, loadPluginsFactory } from './services/extensio
   ],
   providers: [
     { provide: ApplicationSlotServiceToken, useClass: ApplicationSlotServiceImpl },
+    { provide: AuthenticationServiceToken, useClass: DefaultAuthenticationService },
     {
       provide: APP_INITIALIZER,
       useFactory: loadPluginsFactory,
