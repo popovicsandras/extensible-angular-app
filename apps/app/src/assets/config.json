@@ -9,6 +9,18 @@
     }
   },
   "widgets": [],
-  "components": [],
+  "components": [
+    {
+      "displayName": "List component",
+      "remoteEntry": "http://localhost:4201/remoteEntry.mjs",
+      "exposedModule": "./Module",
+      "componentName": "RemoteEntryModule",
+      "options": {
+        "protected": true,
+        "route": "list-entries",
+        "title": "List of things"
+      }
+    }
+  ],
   "plugins": []
 }

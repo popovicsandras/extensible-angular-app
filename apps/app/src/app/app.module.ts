@@ -8,10 +8,12 @@ import { RouterModule } from '@angular/router';
 import { ApplicationSlotServiceImpl } from './services/application-slot.service';
 import { MenuComponent } from './menu.component';
 
-import { ApplicationSlotServiceToken, AppSlotDirective, AuthenticationServiceToken } from '@extensible-angular-app/sdk';
+import { ApplicationSlotServiceToken, AppSlotDirective, AuthenticationServiceToken, NavigationServiceToken } from '@extensible-angular-app/sdk';
 import { HttpClientModule } from '@angular/common/http';
 import { ExtensionsLoaderService, loadPluginsFactory } from './services/extensions-loader';
 import { DefaultAuthenticationService } from './services/authentication.service';
+import { loadRemoteModule } from '@angular-architects/module-federation';
+import { NavigationServiceImpl } from './services/navigation.service';
 
 
 @NgModule({
@@ -24,21 +26,16 @@ import { DefaultAuthenticationService } from './services/authentication.service'
     RouterModule.forRoot(
       [
         {
-          path: 'extension1',
-          loadChildren: () =>
-            import('extension1/Module').then((m) => m.RemoteEntryModule),
-        },
-        {
           path: '',
           component: NxWelcomeComponent,
-        },
-      ],
-      { initialNavigation: 'enabledBlocking' }
+        }
+      ]
     ),
   ],
   providers: [
     { provide: ApplicationSlotServiceToken, useClass: ApplicationSlotServiceImpl },
     { provide: AuthenticationServiceToken, useClass: DefaultAuthenticationService },
+    { provide: NavigationServiceToken, useClass: NavigationServiceImpl },
     {
       provide: APP_INITIALIZER,
       useFactory: loadPluginsFactory,

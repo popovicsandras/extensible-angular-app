@@ -4,6 +4,8 @@ import { from, Observable } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { ApplicationSlotService, ApplicationSlotServiceToken } from "@extensible-angular-app/sdk";
+import { ExtensionConfig } from "./extensions.interface";
+import { RouterService } from "./router.service";
 
 export function loadPluginsFactory(extensionsLoaderService: ExtensionsLoaderService): () => Observable<any> {
   return () => extensionsLoaderService.load();
@@ -16,17 +18,18 @@ export class ExtensionsLoaderService {
 
   constructor(
     private httpClient: HttpClient,
+    private routerService: RouterService,
     @Inject(ApplicationSlotServiceToken) private applicationSlotService: ApplicationSlotService
   ) {}
 
   load(): Observable<any> {
     return this.httpClient.get("/assets/config.json")
       .pipe(
-         switchMap((config) => from(this.loadRemoteModule(config)))
+         switchMap((config) => from(this.loadRemoteModule(config as ExtensionConfig)))
       );
    }
 
-   async loadRemoteModule(config: any) {
+   async loadRemoteModule(config: ExtensionConfig) {
     if (config.template) {
       const module = await loadRemoteModule({
         type: 'module',
@@ -39,6 +42,10 @@ export class ExtensionsLoaderService {
         module[config.template.componentName],
         config.template.options
       );
+    }
+
+    if (config.components) {
+      this.routerService.buildRoutes(config.components);
     }
    }
 }
