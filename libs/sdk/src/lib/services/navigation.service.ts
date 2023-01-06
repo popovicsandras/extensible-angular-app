@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MenuItem, NavigationService } from '@extensible-angular-app/sdk';
+import { MenuItem, NavigationService } from '../tokens/navigation.interfaces';
 
 @Injectable()
 export class NavigationServiceImpl implements NavigationService {

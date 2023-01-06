@@ -3,9 +3,9 @@ import { Inject, Injectable } from "@angular/core";
 import { from, Observable } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import { loadRemoteModule } from '@angular-architects/module-federation';
-import { ApplicationSlotService, ApplicationSlotServiceToken } from "@extensible-angular-app/sdk";
 import { ExtensionConfig } from "./extensions.interface";
 import { RouterService } from "./router.service";
+import { ApplicationSlotService, ApplicationSlotServiceToken } from "../tokens/application-slot.interfaces";
 
 export function loadPluginsFactory(extensionsLoaderService: ExtensionsLoaderService): () => Observable<any> {
   return () => extensionsLoaderService.load();

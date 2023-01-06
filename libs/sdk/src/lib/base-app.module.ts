@@ -1,7 +1,7 @@
 import { APP_INITIALIZER, NgModule } from "@angular/core";
-import { ApplicationSlotServiceToken } from "./application-slot.interfaces";
-import { AuthenticationServiceToken } from "./authentication.interfaces";
-import { NavigationServiceToken } from "./navigation.interfaces";
+import { ApplicationSlotServiceToken } from "./tokens/application-slot.interfaces";
+import { AuthenticationServiceToken } from "./tokens/authentication.interfaces";
+import { NavigationServiceToken } from "./tokens/navigation.interfaces";
 import { ApplicationSlotServiceImpl } from "./services/application-slot.service";
 import { DefaultAuthenticationService } from "./services/authentication.service";
 import { ExtensionsLoaderService, loadPluginsFactory } from "./services/extensions-loader";

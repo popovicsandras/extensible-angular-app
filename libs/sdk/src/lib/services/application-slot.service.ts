@@ -1,5 +1,5 @@
 import { Injectable, Type } from "@angular/core";
-import { ApplicationSlotService, SlotRecord } from "@extensible-angular-app/sdk";
+import { ApplicationSlotService, SlotRecord } from "../tokens/application-slot.interfaces";
 
 @Injectable()
 export class ApplicationSlotServiceImpl implements ApplicationSlotService {

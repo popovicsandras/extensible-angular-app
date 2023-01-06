@@ -1,7 +1,7 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavigationService, NavigationServiceToken } from '@extensible-angular-app/sdk';
+import { NavigationService, NavigationServiceToken } from '../tokens/navigation.interfaces';
 import { ComponentConfig } from './extensions.interface';
 
 @Injectable({ providedIn: 'root' })

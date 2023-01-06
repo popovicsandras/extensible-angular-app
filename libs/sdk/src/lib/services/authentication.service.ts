@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AuthenticationService } from '@extensible-angular-app/sdk';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { AuthenticationService } from '../tokens/authentication.interfaces';
 
 @Injectable()
 export class DefaultAuthenticationService implements AuthenticationService {
