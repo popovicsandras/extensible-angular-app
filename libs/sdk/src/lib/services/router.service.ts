@@ -1,4 +1,4 @@
-import { loadRemoteModule } from '@angular-architects/module-federation';
+import { loadRemoteModule } from '@nrwl/angular/mf';
 import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavigationService, NavigationServiceToken } from '../tokens/navigation.interfaces';
@@ -18,12 +18,8 @@ export class RouterService {
         routes.push({
           path: component.options.route,
           loadChildren: () =>
-            loadRemoteModule({
-                type: 'module',
-                remoteEntry: component.remoteEntry,
-                exposedModule: component.exposedModule
-            })
-            .then(m => m.RemoteEntryModule)
+            loadRemoteModule(component.remoteName, component.exposedModule)
+              .then(m => m.RemoteEntryModule)
         });
         this.navigationService.addMenuItem({
           title: component.options.title,

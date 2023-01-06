@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Inject, Injectable } from "@angular/core";
 import { from, Observable } from "rxjs";
 import { switchMap } from "rxjs/operators";
-import { loadRemoteModule } from '@angular-architects/module-federation';
+import { loadRemoteModule } from '@nrwl/angular/mf';
 import { ExtensionConfig } from "./extensions.interface";
 import { RouterService } from "./router.service";
 import { ApplicationSlotService, ApplicationSlotServiceToken } from "../tokens/application-slot.interfaces";
@@ -31,11 +31,7 @@ export class ExtensionsLoaderService {
 
    async loadRemoteModule(config: ExtensionConfig) {
     if (config.template) {
-      const module = await loadRemoteModule({
-        type: 'module',
-        remoteEntry: config.template.remoteEntry,
-        exposedModule: config.template.exposedModule
-      });
+      const module = await loadRemoteModule(config.template.remoteName, config.template.exposedModule);
 
       this.applicationSlotService.set(
         'template',

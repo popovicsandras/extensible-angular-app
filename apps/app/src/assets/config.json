@@ -1,7 +1,7 @@
 {
   "template":   {
     "displayName": "Template",
-    "remoteEntry": "http://localhost:4202/remoteEntry.mjs",
+    "remoteName": "custom-template",
     "exposedModule": "./Template",
     "componentName": "AppTemplateComponent",
     "options": {
@@ -12,7 +12,7 @@
   "components": [
     {
       "displayName": "List component",
-      "remoteEntry": "http://localhost:4201/remoteEntry.mjs",
+      "remoteName": "extension1",
       "exposedModule": "./Module",
       "componentName": "RemoteEntryModule",
       "options": {

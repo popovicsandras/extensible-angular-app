@@ -1,7 +1,12 @@
 const { withModuleFederation } = require('@nrwl/angular/module-federation');
 const config = require('./module-federation.config');
+
+console.log({...config, remotes: []});
 module.exports = withModuleFederation({
   ...config,
+  // In production mode we are not using module federation, but bake everything into the app.
+  // Hence we don't need nx to start the dev-servers for us :. project.json's "skipRemotes" peoperty
+  remotes: []
   /*
    * Remote overrides for production.
    * Each entry is a pair of an unique name and the URL where it is deployed.

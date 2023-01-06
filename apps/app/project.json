@@ -5,6 +5,12 @@
   "sourceRoot": "apps/app/src",
   "prefix": "extensible-app",
   "targets": {
+    "prebuild": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "node apps/app/scripts/assemble-production-build.js"
+      }
+    },
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
@@ -56,13 +62,18 @@
           "namedChunks": true
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "dependsOn": [ "prebuild" ]
     },
     "serve": {
       "executor": "@nrwl/angular:module-federation-dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "app:build:production"
+          "browserTarget": "app:build:production",
+          "skipRemotes": [
+            "extension1",
+            "custom-template"
+          ]
         },
         "development": {
           "browserTarget": "app:build:development"

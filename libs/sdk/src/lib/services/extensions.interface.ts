@@ -15,7 +15,7 @@ export type ComponentConfig = RemoteConfig<{
 
 export interface RemoteConfig<T extends { [key: string]: any; }> {
   displayName: string;
-  remoteEntry: string;
+  remoteName: string;
   exposedModule: string;
   componentName: string;
   options: T;
