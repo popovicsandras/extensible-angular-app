@@ -7,7 +7,7 @@ import { ExtensionConfig } from "./extensions.interface";
 import { RouterService } from "./router.service";
 import { ApplicationSlotService, ApplicationSlotServiceToken } from "../tokens/application-slot.interfaces";
 
-export function loadPluginsFactory(extensionsLoaderService: ExtensionsLoaderService): () => Observable<any> {
+export function loadExtensionsFactory(extensionsLoaderService: ExtensionsLoaderService): () => Observable<any> {
   return () => extensionsLoaderService.load();
 }
 
