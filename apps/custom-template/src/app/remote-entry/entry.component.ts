@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { NxWelcomeComponent } from './nx-welcome.component';
+import { AppTemplateComponent } from '@extensible-angular-app/template';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, NxWelcomeComponent],
+  imports: [
+    AppTemplateComponent,
+    NxWelcomeComponent
+  ],
   selector: 'extensible-app-custom-template-entry',
-  template: `<extensible-app-nx-welcome></extensible-app-nx-welcome>`,
+  template: `<app-template></app-template>`,
 })
 export class RemoteEntryComponent {}

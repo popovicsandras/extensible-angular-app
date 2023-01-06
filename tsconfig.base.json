@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@extensible-angular-app/sdk": ["libs/sdk/src/index.ts"]
+      "@extensible-angular-app/sdk": ["libs/sdk/src/index.ts"],
+      "@extensible-angular-app/template": ["libs/template/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
