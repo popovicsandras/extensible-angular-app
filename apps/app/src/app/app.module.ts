@@ -15,7 +15,6 @@ import { DefaultAuthenticationService } from './services/authentication.service'
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { NavigationServiceImpl } from './services/navigation.service';
 
-
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent, MenuComponent],
   imports: [
@@ -28,7 +27,40 @@ import { NavigationServiceImpl } from './services/navigation.service';
         {
           path: '',
           component: NxWelcomeComponent,
-        }
+        },
+        {
+          path: 'extension1',
+          loadChildren: () => {
+            return import('extension1/Module' as any).then((m) => {
+              console.log('m', m);
+              return m.RemoteEntryModule;
+            });
+          }
+        },
+        // {
+        //   path: 'extension1b',
+        //   loadChildren: () => {
+        //     debugger;
+        //     return import('../../../../dist/apps/extension1/default-apps_extension1_src_app_remote-entry_entry_module_ts/Module' as any).then((m) => {
+        //       debugger;
+        //       console.log('m', m);
+        //       return m.RemoteEntryModule;
+        //     });
+        //   }
+        // },
+        // {
+        //   path: 'vamonos',
+        //   loadChildren: () => {
+        //     return loadRemoteModule({
+        //       type: 'module',
+        //       remoteEntry: 'http://localhost:4201/remoteEntry.mjs',
+        //       exposedModule: './Module'
+        //     })
+        //     .then(m => {
+        //       m.RemoteEntryModule;
+        //     })
+        //   }
+        // },
       ]
     ),
   ],
