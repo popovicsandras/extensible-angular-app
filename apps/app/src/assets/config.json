@@ -1,7 +1,7 @@
 {
   "template":   {
     "displayName": "Template",
-    "remoteName": "custom-template",
+    "remoteName": "@extensible-angular-app/custom-template",
     "exposedModule": "./Template",
     "componentName": "AppTemplateComponent",
     "options": {
@@ -12,7 +12,7 @@
   "components": [
     {
       "displayName": "List component",
-      "remoteName": "extension1",
+      "remoteName": "@extensible-angular-app/extension1",
       "exposedModule": "./Module",
       "componentName": "RemoteEntryModule",
       "options": {

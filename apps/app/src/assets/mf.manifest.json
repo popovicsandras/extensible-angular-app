@@ -1,4 +1,4 @@
 {
-  "extension1": "http://localhost:4201",
-  "custom-template": "http://localhost:4202"
+  "@extensible-angular-app/extension1": "http://localhost:4201",
+  "@extensible-angular-app/custom-template": "http://localhost:4202"
 }
