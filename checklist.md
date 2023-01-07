@@ -1,7 +1,7 @@
 - [x] Being able to provide custom template
 - [x] Share services via injection token from an EDK
 - [ ] Routed components
-  - [ ] As angular modules
+  - [x] As angular modules
   - [ ] As angular standalone components
   - [ ] As authenticated user
   - [ ] As unauthenticated user 
