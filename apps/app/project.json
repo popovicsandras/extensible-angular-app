@@ -46,6 +46,10 @@
             {
               "replace": "apps/app/src/environments/environment.ts",
               "with": "apps/app/src/environments/environment.prod.ts"
+            },
+            {
+              "replace": "apps/app/src/app/production-build.module.ts",
+              "with": "apps/app/tmp/production-build.module.ts"
             }
           ],
           "outputHashing": "all",
@@ -83,7 +87,8 @@
       "options": {
         "port": 4200,
         "publicHost": "http://localhost:4200"
-      }
+      },
+      "dependsOn": [ "prebuild" ]
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",

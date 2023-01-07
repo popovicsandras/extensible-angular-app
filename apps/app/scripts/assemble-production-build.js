@@ -1,10 +1,31 @@
 const { resolve } = require('path');
 const config = require('../src/assets/config.json');
 const readFileSync = require('fs-extra').readFileSync;
+const writeFileSync = require('fs-extra').writeFileSync;
+const ensureDirSync = require('fs-extra').ensureDirSync;
 
-console.log('retek', config);
+let ngModuleContent = readFileSync(resolve(__dirname, './production-build.module.ts'), 'utf8');
 
-const ngModuleContent = readFileSync(resolve(__dirname, '../src/app/production-build.module.ts'), 'utf8');
+const staticImports = [];
+const modulesImports = [];
+const modulesConstructor = [];
 
-const staticImports =
-console.log(ngModuleContent);
+if (config.template) {
+  staticImports.push(`import { ${config.template.componentName} } from '${config.template.remoteName}';`);
+  modulesImports.push(config.template.componentName);
+  modulesConstructor.push(`
+    this.applicationSlotService.set(
+      'template',
+      ${config.template.componentName},
+      ${JSON.stringify(config.template.options)}
+    );
+  `);
+}
+
+ngModuleContent = ngModuleContent.replace('/*${IMPORTS}*/', staticImports.join('\n'));
+ngModuleContent = ngModuleContent.replace('/*${MODULE_IMPORTS}*/', modulesImports.join(',\n'));
+ngModuleContent = ngModuleContent.replace('/*${MODULE_CONSTRUCTOR}*/', modulesConstructor.join('\n\n'));
+
+const tmpDir = resolve(__dirname, '../tmp');
+ensureDirSync(tmpDir);
+writeFileSync(resolve(tmpDir, 'production-build.module.ts'), ngModuleContent, 'utf8');

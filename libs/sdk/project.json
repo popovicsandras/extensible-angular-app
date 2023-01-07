@@ -4,6 +4,23 @@
   "projectType": "library",
   "sourceRoot": "libs/sdk/src",
   "prefix": "extensible-app",
-  "targets": {},
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/sdk/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/sdk/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/sdk/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    }
+  },
   "tags": []
 }
