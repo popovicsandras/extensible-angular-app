@@ -4,7 +4,7 @@ const readFileSync = require('fs-extra').readFileSync;
 const writeFileSync = require('fs-extra').writeFileSync;
 const ensureDirSync = require('fs-extra').ensureDirSync;
 
-let ngModuleContent = readFileSync(resolve(__dirname, './production-build.module.ts'), 'utf8');
+let ngModuleContent = readFileSync(resolve(process.cwd(), 'apps/app/src/app/production-build.module.ts'), 'utf8');
 
 const staticImports = [];
 const modulesImports = [];
