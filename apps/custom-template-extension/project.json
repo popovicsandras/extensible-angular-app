@@ -121,6 +121,18 @@
           "buildTarget": "custom-template-extension:build:production"
         }
       }
+    },
+    "package": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "cp -R ./dist/apps/custom-template-extension ./dist/libs/custom-template",
+          "mv ./dist/libs/custom-template/custom-template-extension ./dist/libs/custom-template/mf",
+          "npm pack dist/libs/custom-template"
+        ],
+        "parallel": false
+      },
+      "dependsOn": ["^build", "build"]
     }
   },
   "tags": []
