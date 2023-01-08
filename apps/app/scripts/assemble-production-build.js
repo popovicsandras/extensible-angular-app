@@ -45,6 +45,8 @@ class ProductionBuildAssembler {
 
   processComponents() {
     if (config.components?.length) {
+      // We need to wrap each component in a module to be able to lazy load it...
+      // Angular quirks: can't lazy load a component/module from node_modules
       config.components.forEach((component, key) => {
         const fileName = `wrapped-lazy-${key}.module`;
         const wrappedModuleName = `WrappedModuleForLazyLoad${key}`;
