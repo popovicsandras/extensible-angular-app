@@ -79,7 +79,7 @@
         "production": {
           "browserTarget": "app:build:production",
           "skipRemotes": [
-            "content",
+            "content-extension",
             "custom-template-extension"
           ]
         },

@@ -1,8 +1,8 @@
 {
-  "name": "content",
+  "name": "content-extension",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/content/src",
+  "sourceRoot": "apps/content-extension/src",
   "prefix": "extensible-app",
   "targets": {
     "build": {
@@ -11,22 +11,22 @@
         "{options.outputPath}"
       ],
       "options": {
-        "outputPath": "dist/apps/content",
-        "index": "apps/content/src/index.html",
-        "main": "apps/content/src/main.ts",
-        "polyfills": "apps/content/src/polyfills.ts",
-        "tsConfig": "apps/content/tsconfig.app.json",
+        "outputPath": "dist/apps/content-extension",
+        "index": "apps/content-extension/src/index.html",
+        "main": "apps/content-extension/src/main.ts",
+        "polyfills": "apps/content-extension/src/polyfills.ts",
+        "tsConfig": "apps/content-extension/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
-          "apps/content/src/favicon.ico",
-          "apps/content/src/assets"
+          "apps/content-extension/src/favicon.ico",
+          "apps/content-extension/src/assets"
         ],
         "styles": [
-          "apps/content/src/styles.scss"
+          "apps/content-extension/src/styles.scss"
         ],
         "scripts": [],
         "customWebpackConfig": {
-          "path": "apps/content/webpack.config.js"
+          "path": "apps/content-extension/webpack.config.js"
         }
       },
       "configurations": {
@@ -45,13 +45,13 @@
           ],
           "fileReplacements": [
             {
-              "replace": "apps/content/src/environments/environment.ts",
-              "with": "apps/content/src/environments/environment.prod.ts"
+              "replace": "apps/content-extension/src/environments/environment.ts",
+              "with": "apps/content-extension/src/environments/environment.prod.ts"
             }
           ],
           "outputHashing": "all",
           "customWebpackConfig": {
-            "path": "apps/content/webpack.prod.config.js"
+            "path": "apps/content-extension/webpack.prod.config.js"
           }
         },
         "development": {
@@ -69,10 +69,10 @@
       "executor": "@nrwl/angular:webpack-dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "content:build:production"
+          "browserTarget": "content-extension:build:production"
         },
         "development": {
-          "browserTarget": "content:build:development"
+          "browserTarget": "content-extension:build:development"
         }
       },
       "defaultConfiguration": "development",
@@ -85,15 +85,15 @@
       "executor": "@nrwl/angular:file-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "content:build",
+        "buildTarget": "content-extension:build",
         "port": 4201
       },
       "configurations": {
         "development": {
-          "buildTarget": "content:build:development"
+          "buildTarget": "content-extension:build:development"
         },
         "production": {
-          "buildTarget": "content:build:production"
+          "buildTarget": "content-extension:build:production"
         }
       }
     }
