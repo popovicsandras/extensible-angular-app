@@ -3,6 +3,5 @@
   "dest": "../../dist/libs/content",
   "lib": {
     "entryFile": "src/index.ts"
-  },
-  "allowedNonPeerDependencies": ["@extensible-angular-app/sdk"]
+  }
 }
