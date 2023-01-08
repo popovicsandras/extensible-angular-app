@@ -19,7 +19,7 @@ export class RouterService {
           path: component.options.route,
           loadChildren: () =>
             loadRemoteModule(component.remoteName, component.exposedModule)
-              .then(m => m.RemoteEntryModule)
+              .then(m => m[component.componentName])
         });
         this.navigationService.addMenuItem({
           title: component.options.title,

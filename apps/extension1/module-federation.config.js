@@ -1,7 +1,7 @@
 module.exports = {
   name: 'extension1',
   exposes: {
-    './Module': 'apps/extension1/src/app/remote-entry/entry.module.ts',
+    './Files': 'apps/extension1/src/lib/files.module.ts',
   },
   additionalShared: [ '@angular/core', '@angular/router', 'sdk' ]
 };

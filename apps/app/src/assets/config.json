@@ -13,12 +13,12 @@
     {
       "displayName": "List component",
       "remoteName": "@extensible-angular-app/extension1",
-      "exposedModule": "./Module",
-      "componentName": "RemoteEntryModule",
+      "exposedModule": "./Files",
+      "componentName": "FilesModule",
       "options": {
         "protected": true,
-        "route": "list-entries",
-        "title": "List of things"
+        "route": "files",
+        "title": "Files"
       }
     }
   ],

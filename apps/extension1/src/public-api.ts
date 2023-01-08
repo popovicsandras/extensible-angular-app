@@ -1,1 +1,1 @@
-export { RemoteEntryModule } from './app/remote-entry/entry.module';
+export { FilesModule } from './lib/files.module';
