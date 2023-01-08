@@ -80,7 +80,7 @@
           "browserTarget": "app:build:production",
           "skipRemotes": [
             "content",
-            "custom-template"
+            "mf-custom-template"
           ]
         },
         "development": {
