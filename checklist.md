@@ -19,6 +19,7 @@
 
 TODO:
 - Restructure the content the same way as the template
+- Do we need this: "allowedNonPeerDependencies": ["@extensible-angular-app/sdk"] ?
 - Test the static build with multiple extensions, not just with one (+process as a standalone component)
 - More meaningful components for demoing:
   - content list

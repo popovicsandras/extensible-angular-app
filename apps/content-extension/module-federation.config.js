@@ -4,7 +4,7 @@ module.exports = {
   // During thre preview (development) mode start, we fetch remotes by the manifest.json file
   name: 'content-extension',
   exposes: {
-    './Files': 'apps/content-extension/src/lib/files.module.ts',
+    './Files': 'libs/content/src/lib/files.module.ts',
   },
   additionalShared: [ '@angular/core', '@angular/router', 'sdk' ]
 };

@@ -7,9 +7,7 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/custom-template-extension",
         "index": "apps/custom-template-extension/src/index.html",
@@ -21,9 +19,7 @@
           "apps/custom-template-extension/src/favicon.ico",
           "apps/custom-template-extension/src/assets"
         ],
-        "styles": [
-          "apps/custom-template-extension/src/styles.scss"
-        ],
+        "styles": ["apps/custom-template-extension/src/styles.scss"],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/custom-template-extension/webpack.config.js"
@@ -98,9 +94,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/apps/custom-template-extension"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/apps/custom-template-extension"],
       "options": {
         "jestConfig": "apps/custom-template-extension/jest.config.ts",
         "passWithNoTests": true

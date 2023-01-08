@@ -96,6 +96,18 @@
           "buildTarget": "content-extension:build:production"
         }
       }
+    },
+    "package": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "cp -R ./dist/apps/content-extension ./dist/libs/content",
+          "mv ./dist/libs/content/content-extension ./dist/libs/content/mf",
+          "npm pack dist/libs/content"
+        ],
+        "parallel": false
+      },
+      "dependsOn": ["^build", "build"]
     }
   },
   "tags": []

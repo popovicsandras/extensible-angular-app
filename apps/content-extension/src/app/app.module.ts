@@ -12,8 +12,8 @@ import { AppComponent } from './app.component';
         {
           path: '',
           loadChildren: () =>
-            import('../lib/files.module').then(
-              (m) => m.FilesModule
+            import('../lib/lazy.module').then(
+              (m) => m.LazyModule
             ),
         },
       ],

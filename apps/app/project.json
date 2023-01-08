@@ -71,17 +71,14 @@
         }
       },
       "defaultConfiguration": "development",
-      "dependsOn": [ "prebuild" ]
+      "dependsOn": ["prebuild"]
     },
     "serve": {
       "executor": "@nrwl/angular:module-federation-dev-server",
       "configurations": {
         "production": {
           "browserTarget": "app:build:production",
-          "skipRemotes": [
-            "content-extension",
-            "custom-template-extension"
-          ]
+          "skipRemotes": ["content-extension", "custom-template-extension"]
         },
         "development": {
           "browserTarget": "app:build:development"
@@ -92,7 +89,7 @@
         "port": 4200,
         "publicHost": "http://localhost:4200"
       },
-      "dependsOn": [ "prebuild" ]
+      "dependsOn": ["prebuild"]
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
