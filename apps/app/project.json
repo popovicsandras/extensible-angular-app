@@ -6,7 +6,7 @@
   "prefix": "extensible-app",
   "targets": {
     "prebuild": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "command": "node apps/app/scripts/assemble-production-build.js"
       }
@@ -80,7 +80,7 @@
           "browserTarget": "app:build:production",
           "skipRemotes": [
             "content",
-            "mf-custom-template"
+            "custom-template-extension"
           ]
         },
         "development": {

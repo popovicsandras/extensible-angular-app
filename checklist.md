@@ -29,3 +29,6 @@ TODO:
 - User avatar
 - Better template design
 
+Common errors:
+- When and injection token can not be used from the sdk after a folder rename => do some changes in the package.json and package-lock.json. There most be some cache besides, node, nx and angular, which can not be reset, unless this way
+
