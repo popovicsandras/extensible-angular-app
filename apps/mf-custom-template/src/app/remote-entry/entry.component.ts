@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { DemoComponent } from './demo.component';
-import { AppTemplateComponent } from '@extensible-angular-app/template';
+import { AppTemplateComponent } from '@extensible-angular-app/custom-template';
 import { ApplicationSlotService, ApplicationSlotServiceToken } from '@extensible-angular-app/sdk';
 import { DemoMenuComponent } from './demo-menu.component';
 

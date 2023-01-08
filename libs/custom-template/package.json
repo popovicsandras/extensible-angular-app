@@ -1,5 +1,5 @@
 {
-  "name": "@extensible-angular-app/template",
+  "name": "@extensible-angular-app/custom-template",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^15.0.0",

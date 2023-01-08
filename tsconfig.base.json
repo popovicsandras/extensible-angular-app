@@ -20,7 +20,7 @@
     "baseUrl": ".",
     "paths": {
       "@extensible-angular-app/sdk": ["libs/sdk/src/index.ts"],
-      "@extensible-angular-app/template": ["libs/template/src/index.ts"],
+      "@extensible-angular-app/custom-template": ["libs/custom-template/src/index.ts"],
       "@extensible-angular-app/content": ["apps/content/src/public-api.ts"]
     }
   },

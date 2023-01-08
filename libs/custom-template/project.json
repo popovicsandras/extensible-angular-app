@@ -1,22 +1,22 @@
 {
-  "name": "template",
+  "name": "custom-template",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/template/src",
+  "sourceRoot": "libs/custom-template/src",
   "prefix": "extensible-app",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
-        "project": "libs/template/ng-package.json"
+        "project": "libs/custom-template/ng-package.json"
       },
       "configurations": {
         "production": {
-          "tsConfig": "libs/template/tsconfig.lib.prod.json"
+          "tsConfig": "libs/custom-template/tsconfig.lib.prod.json"
         },
         "development": {
-          "tsConfig": "libs/template/tsconfig.lib.json"
+          "tsConfig": "libs/custom-template/tsconfig.lib.json"
         }
       },
       "defaultConfiguration": "production"
