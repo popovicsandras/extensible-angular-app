@@ -20,6 +20,16 @@
         }
       },
       "defaultConfiguration": "production"
+    },
+    "package": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "npm pack dist/libs/sdk"
+        ],
+        "parallel": false
+      },
+      "dependsOn": ["build"]
     }
   },
   "tags": []
