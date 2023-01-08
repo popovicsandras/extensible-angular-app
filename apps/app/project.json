@@ -49,7 +49,11 @@
             },
             {
               "replace": "apps/app/src/app/production-build.module.ts",
-              "with": "apps/app/tmp/production-build.module.ts"
+              "with": "apps/app/src/app/.production-build.generated.module.ts"
+            },
+            {
+              "replace": "apps/app/src/app/app.routes.ts",
+              "with": "apps/app/src/app/.app.generated.routes.ts"
             }
           ],
           "outputHashing": "all",

@@ -18,13 +18,10 @@
 
 
 TODO:
-- Static build of routed components:
-  - create lazy-module wrapper for each library
-  - update app-routes
-  - add menuitem registration
-- Investigate the option of a better extension format:
+- Investigate the option of a better extension format and create a builder and packager for it:
   - app (federated-module)
   - lib (library which lets the extension to be built statically)
+- Test the static build with multiple extensions, not just with one
 - More meaningful components for demoing:
   - content list
   - process list

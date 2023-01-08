@@ -1,2 +1,4 @@
-tmp
-src/app/lazy-modules
+src/app/.app.generated.routes.ts
+src/app/.production-build.generated.module.ts
+src/app/.lazy-modules
+
