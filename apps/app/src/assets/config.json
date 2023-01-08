@@ -12,7 +12,7 @@
   "components": [
     {
       "displayName": "List component",
-      "remoteName": "@extensible-angular-app/extension1",
+      "remoteName": "@extensible-angular-app/content",
       "exposedModule": "./Files",
       "componentName": "FilesModule",
       "options": {

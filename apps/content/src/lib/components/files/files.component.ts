@@ -1,9 +1,7 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { ApplicationSlotService, ApplicationSlotServiceToken } from '@extensible-angular-app/sdk';
 
-
 @Component({
-  /* eslint-disable-next-line */
   selector: 'files',
   templateUrl: `./files.component.html`,
   styles: [],
