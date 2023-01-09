@@ -45,26 +45,32 @@ class ProductionBuildAssembler {
 
   processComponents() {
     if (config.components?.length) {
-      // We need to wrap each component in a module to be able to lazy load it...
-      // Angular quirks: can't lazy load a component/module from node_modules
       config.components.forEach((component, key) => {
-        const fileName = `wrapped-lazy-${key}.module`;
-        const wrappedModuleName = `WrappedModuleForLazyLoad${key}`;
+        // We need to wrap each Angular module in a module to be able to lazy load it...
+        // Angular quirks: can't lazy load a component/module from node_modules
+        if (!component.standalone) {
+          const fileName = `wrapped-lazy-${key}.module`;
+          const wrappedModuleName = `WrappedModuleForLazyLoad${key}`;
 
-        const wrappedModuleContent = this.wrapperModuleContentTemplate
-          .replaceAll('/*${MODULE_NAME}*/', component.componentName)
-          .replace('/*${MODULE_PATH}*/', component.remoteName)
-          .replace('/*${WRAPPED_MODULE_NAME}*/ ', wrappedModuleName);
-
-          this.routes.push(`{ path: '${component.options.route}', loadChildren: () => import('./.lazy-modules/${fileName}').then(m => m.${wrappedModuleName}) }`);
-
-          this.modulesConstructor.push(`
-            this.navigationService.addMenuItem({
-              title: '${component.options.title}',
-              url: '${component.options.route}'
-            });`);
+          const wrappedModuleContent = this.wrapperModuleContentTemplate
+            .replaceAll('/*${MODULE_NAME}*/', component.componentName)
+            .replace('/*${MODULE_PATH}*/', component.remoteName)
+            .replace('/*${WRAPPED_MODULE_NAME}*/ ', wrappedModuleName);
 
           writeFileSync(resolve(wrappedModulesContainerPath, `${fileName}.ts`), wrappedModuleContent, 'utf8');
+
+          this.routes.push(`{ path: '${component.options.route}', loadChildren: () => import('./.lazy-modules/${fileName}').then(m => m.${wrappedModuleName}) }`);
+        }
+        // However it works with standalone components!
+        else {
+          this.routes.push(`{ path: '${component.options.route}', loadComponent: () => import('${component.remoteName}').then(m => m.${component.componentName}) }`);
+        }
+
+        this.modulesConstructor.push(`
+          this.navigationService.addMenuItem({
+            title: '${component.options.title}',
+            url: '${component.options.route}'
+          });`);
       });
     }
   }
