@@ -17,6 +17,7 @@ node_modules
 .settings/
 *.sublime-workspace
 .history
+.extension-repository-store
 
 # IDE - VSCode
 .vscode/*
