@@ -20,7 +20,9 @@
 TODO:
 - Test the static build with multiple extensions, not just with one:
   - process as a standalone component
-  - collect the steps as well for a future schematic
+  - collect the steps as well for a future schematic: everything, except
+    - buildable: true, 
+    - publishable: true
 - More meaningful components for demoing:
   - content list
   - process list
