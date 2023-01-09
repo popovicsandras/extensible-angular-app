@@ -11,7 +11,7 @@
   "widgets": [],
   "components": [
     {
-      "displayName": "List component",
+      "displayName": "File browser",
       "remoteName": "@extensible-angular-app/content",
       "exposedModule": "./Files",
       "componentName": "FilesModule",
@@ -19,6 +19,18 @@
         "protected": true,
         "route": "files",
         "title": "Files"
+      }
+    },
+    {
+      "displayName": "Process browser",
+      "remoteName": "@extensible-angular-app/process",
+      "exposedModule": "./Processes",
+      "componentName": "ProcessComponent",
+      "standalone": true,
+      "options": {
+        "protected": true,
+        "route": "processes",
+        "title": "Processes"
       }
     }
   ],

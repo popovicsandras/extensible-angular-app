@@ -18,5 +18,6 @@ export interface RemoteConfig<T extends { [key: string]: any; }> {
   remoteName: string;
   exposedModule: string;
   componentName: string;
+  standalone: boolean;
   options: T;
 }

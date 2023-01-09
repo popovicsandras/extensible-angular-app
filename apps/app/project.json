@@ -78,7 +78,7 @@
       "configurations": {
         "production": {
           "browserTarget": "app:build:production",
-          "skipRemotes": ["content-extension", "custom-template-extension"]
+          "skipRemotes": ["content-extension", "process-extension", "custom-template-extension"]
         },
         "development": {
           "browserTarget": "app:build:development"

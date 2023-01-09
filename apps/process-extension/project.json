@@ -1,28 +1,28 @@
 {
-  "name": "content-extension",
+  "name": "process-extension",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/content-extension/src",
+  "sourceRoot": "apps/process-extension/src",
   "prefix": "extensible-app",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/content-extension",
-        "index": "apps/content-extension/src/index.html",
-        "main": "apps/content-extension/src/main.ts",
-        "polyfills": "apps/content-extension/src/polyfills.ts",
-        "tsConfig": "apps/content-extension/tsconfig.app.json",
+        "outputPath": "dist/apps/process-extension",
+        "index": "apps/process-extension/src/index.html",
+        "main": "apps/process-extension/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/process-extension/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
-          "apps/content-extension/src/favicon.ico",
-          "apps/content-extension/src/assets"
+          "apps/process-extension/src/favicon.ico",
+          "apps/process-extension/src/assets"
         ],
-        "styles": ["apps/content-extension/src/styles.scss"],
+        "styles": ["apps/process-extension/src/styles.scss"],
         "scripts": [],
         "customWebpackConfig": {
-          "path": "apps/content-extension/webpack.config.js"
+          "path": "apps/process-extension/webpack.config.js"
         }
       },
       "configurations": {
@@ -39,15 +39,9 @@
               "maximumError": "4kb"
             }
           ],
-          "fileReplacements": [
-            {
-              "replace": "apps/content-extension/src/environments/environment.ts",
-              "with": "apps/content-extension/src/environments/environment.prod.ts"
-            }
-          ],
           "outputHashing": "all",
           "customWebpackConfig": {
-            "path": "apps/content-extension/webpack.prod.config.js"
+            "path": "apps/process-extension/webpack.prod.config.js"
           }
         },
         "development": {
@@ -65,45 +59,39 @@
       "executor": "@nrwl/angular:webpack-dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "content-extension:build:production"
+          "browserTarget": "process-extension:build:production"
         },
         "development": {
-          "browserTarget": "content-extension:build:development"
+          "browserTarget": "process-extension:build:development"
         }
       },
       "defaultConfiguration": "development",
       "options": {
-        "port": 4201,
-        "publicHost": "http://localhost:4201"
+        "port": 4203,
+        "publicHost": "http://localhost:4203"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "process-extension:build"
       }
     },
     "serve-static": {
       "executor": "@nrwl/angular:file-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "content-extension:build",
-        "port": 4201
+        "buildTarget": "process-extension:build",
+        "port": 4203
       },
       "configurations": {
         "development": {
-          "buildTarget": "content-extension:build:development"
+          "buildTarget": "process-extension:build:development"
         },
         "production": {
-          "buildTarget": "content-extension:build:production"
+          "buildTarget": "process-extension:build:production"
         }
       }
-    },
-    "package": {
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": [
-          "cp -R ./dist/apps/content-extension ./dist/libs/content",
-          "mv ./dist/libs/content/content-extension ./dist/libs/content/mf",
-          "npm pack dist/libs/content"
-        ],
-        "parallel": false
-      },
-      "dependsOn": ["^build", "build"]
     }
   },
   "tags": []

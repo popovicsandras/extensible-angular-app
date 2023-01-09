@@ -1,4 +1,5 @@
 {
+  "@extensible-angular-app/custom-template": "http://localhost:4202",
   "@extensible-angular-app/content": "http://localhost:4201",
-  "@extensible-angular-app/custom-template": "http://localhost:4202"
+  "@extensible-angular-app/process": "http://localhost:4203"
 }
