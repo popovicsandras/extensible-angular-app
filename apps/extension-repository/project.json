@@ -1,0 +1,56 @@
+{
+  "name": "extension-repository",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/extension-repository",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/extension-repository",
+        "outputPath": "dist/apps/extension-repository"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/extension-repository"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "extension-repository:build",
+        "dev": true,
+        "port": 4000
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "extension-repository:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "extension-repository:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "extension-repository:build:production"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/extension-repository/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}
