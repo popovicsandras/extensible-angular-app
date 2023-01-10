@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
+@import 'material-design-icons/iconfont/material-icons.css';
+
+@import 'styles/variable';
+
+@import 'styles/mixins/spacing';
+@import 'styles/mixins/color';
+@import 'styles/mixins/font';
+
+@import 'styles/component/global';
+@import 'styles/component/heading';
+
+@import 'styles/component/header';
+@import 'styles/component/sidebar';
+@import 'styles/component/spinner';
+@import 'styles/component/card';
+@import 'styles/component/dashboard';
+
+@import 'styles/responsive';
