@@ -1,8 +1,13 @@
+- Dealing with assets
+  - package them into the extension
+  - copy them into assets
+- Move config from assets to config directory
+- Get rid of basic template from app and add a default spinner?
 - More meaningful components for demoing:
   - content list
   - process list
   - etc
-- User avatar
+- User avatar: get it from auth service
 - Better template design
 
 Common errors:

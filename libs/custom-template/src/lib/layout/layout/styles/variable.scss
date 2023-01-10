@@ -18,6 +18,8 @@ $custom-typography: mat.define-typography-config(
   $font-family: 'Poppins, sans-serif'
 );
 
+@include mat.core();
+
 $theme: mat.define-light-theme((
  color: (
    primary: $primary,
@@ -29,8 +31,6 @@ $theme: mat.define-light-theme((
 
 $background: map-get($theme, background);
 $foreground: map-get($theme, foreground);
-
-@include mat.core();
 
 // Default Theme
 @include mat.all-component-themes($theme);

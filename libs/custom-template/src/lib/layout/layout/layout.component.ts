@@ -12,6 +12,7 @@ import { AppSidebarComponent } from '../sidebar/sidebar.component';
 import { SpinnerComponent } from '../spinner.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   standalone: true,
@@ -29,6 +30,7 @@ import 'hammerjs';
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
+    MatButtonModule,
     FlexLayoutModule
   ],
   encapsulation: ViewEncapsulation.None

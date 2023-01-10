@@ -16,14 +16,23 @@ mat-sidenav {
   #snav {
     box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
     .mdc-list-item {
-      height: auto;
+      padding: 0;
+      height: 45px;
+      margin-bottom: 10px;
       &:hover {
         background: none;
+
+        &::before {
+          opacity: 0;
+        }
       }
 
-      mdc-list-item__content {
+      .mdc-list-item__content {
+        position: relative;
+        top: 5px;
         display: block;
         padding: 0px 15px;
+
         &:hover {
           background: none;
           > a {
@@ -55,7 +64,7 @@ mat-sidenav {
           height: 16px;
         }
       }
-      &.selected > mdc-list-item__content > a {
+      &.selected .mdc-list-item__content a {
         background: $themecolor-alt;
         border-radius: $radius;
         color: $white;
@@ -68,7 +77,7 @@ mat-sidenav {
           transform: rotate(-180deg);
         }
       }
-      &.selected .sub-item mdc-list-item__content a.selected {
+      &.selected .sub-item .mdc-list-item__content a.selected {
         background: transparent;
         color: $inverse;
         font-weight: 500;
