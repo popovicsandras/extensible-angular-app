@@ -11,7 +11,7 @@ import { DemoMenuComponent } from './demo-menu.component';
     DemoComponent
   ],
   selector: 'extensible-app-custom-template-entry',
-  template: `<app-template title="Template showcase"></app-template>`,
+  template: `<app-template title="Template"></app-template>`,
 })
 export class RemoteEntryComponent {
   constructor(@Inject(ApplicationSlotServiceToken) private applicationSlotService: ApplicationSlotService) {
