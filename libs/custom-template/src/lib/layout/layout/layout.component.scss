@@ -17,3 +17,8 @@
 @import 'styles/component/dashboard';
 
 @import 'styles/responsive';
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}

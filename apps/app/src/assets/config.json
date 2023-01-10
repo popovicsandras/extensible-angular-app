@@ -5,7 +5,7 @@
     "exposedModule": "./Template",
     "componentName": "AppTemplateComponent",
     "options": {
-      "title": "Application with custom template"
+      "title": "Workspace"
     }
   },
   "widgets": [],
