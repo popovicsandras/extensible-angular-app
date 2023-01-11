@@ -1,13 +1,31 @@
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-import { AppModule } from './app/app.module';
+import { APP_INITIALIZER, enableProdMode, importProvidersFrom } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from './environments/environment';
+
+import { AppComponent } from './app/app.component';
+import { appRoutes } from './app/app.routes';
+import { BaseAppModule, ExtensionsLoaderService, loadExtensionsFactory } from '@extensible-angular-app/sdk';
+import { HttpClientModule } from '@angular/common/http';
 
 if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch((err) => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [
+    importProvidersFrom(
+      BrowserAnimationsModule,
+      RouterModule.forRoot(appRoutes),
+      BaseAppModule.forRoot(),
+      HttpClientModule,
+    ),
+    ...(!environment.production ? [ {
+      provide: APP_INITIALIZER,
+      useFactory: loadExtensionsFactory,
+      multi: true,
+      deps: [ ExtensionsLoaderService ]
+    } ] : [ ])
+  ],
+});

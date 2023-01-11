@@ -5,9 +5,6 @@
   * It is not used in development mode.
 */
 
-import { NxWelcomeComponent } from "./components/nx-welcome.component";
-
 export const appRoutes = [
-  { path: '', component: NxWelcomeComponent },
   /*${WRAPPED_LAZY_MODULE_ROUTES}*/
 ];

@@ -4,10 +4,20 @@ import {
   ApplicationSlotServiceToken,
   AppSlotDirective
 } from '@extensible-angular-app/sdk';
-import { DefaultAppTemplateComponent } from '../../default-template/default-template.component';
-import { MenuComponent } from './menu.component';
+import { BaseAppModule } from '@extensible-angular-app/sdk';
+
+import { TemplateComponent } from './template.component';
+import { ProductionBuildModule } from './production-build.module';
+import { environment } from '../environments/environment';
+import { CommonModule } from '@angular/common';
 
 @Component({
+  standalone: true,
+  imports: [
+    BaseAppModule,
+    CommonModule,
+    ...(environment.production ? [ ProductionBuildModule ] : [ ])
+  ],
   selector: 'extensible-app-root',
   template: `<ng-template slot="template"></ng-template>`,
 })
@@ -18,16 +28,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     if (!this.applicationSlotService.has('template')) {
-      this.applicationSlotService.set(
-        'template',
-        DefaultAppTemplateComponent,
-        {}
-      );
+      this.applicationSlotService.set('template', TemplateComponent, {});
     }
-    this.applicationSlotService.set(
-      'menu',
-      MenuComponent,
-      {}
-    );
   }
 }

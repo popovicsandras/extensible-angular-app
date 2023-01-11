@@ -11,14 +11,20 @@ import { AppSlotDirective } from "./slot.directive";
   imports: [
     AppSlotDirective
   ],
-  providers: [
-    { provide: ApplicationSlotServiceToken, useClass: ApplicationSlotServiceImpl },
-    { provide: AuthenticationServiceToken, useClass: DefaultAuthenticationService },
-    { provide: NavigationServiceToken, useClass: NavigationServiceImpl }
-  ],
   exports: [
     AppSlotDirective
   ],
   declarations: [],
 })
-export class BaseAppModule {}
+export class BaseAppModule {
+  static forRoot() {
+    return {
+      ngModule: BaseAppModule,
+      providers: [
+        { provide: ApplicationSlotServiceToken, useClass: ApplicationSlotServiceImpl },
+        { provide: AuthenticationServiceToken, useClass: DefaultAuthenticationService },
+        { provide: NavigationServiceToken, useClass: NavigationServiceImpl }
+      ]
+    };
+  }
+}
