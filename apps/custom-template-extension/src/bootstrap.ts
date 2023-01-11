@@ -16,7 +16,7 @@ bootstrapApplication(RemoteEntryComponent, {
 
   providers: [
     importProvidersFrom(
-      BaseAppModule,
+      BaseAppModule.forRoot(),
       BrowserModule,
       BrowserAnimationsModule,
       HttpClientModule,

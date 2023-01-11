@@ -7,7 +7,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { ApplicationSlotService, ApplicationSlotServiceToken, AppSlotDirective } from '@extensible-angular-app/sdk';
 import { AppHeaderComponent } from '../header/header.component';
-import { Menu, MENUITEMS } from '../menu-items';
 import { AppSidebarComponent } from '../sidebar/sidebar.component';
 import { SpinnerComponent } from '../spinner.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -43,7 +42,6 @@ export class AppTemplateComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
 
   private _mobileQueryListener: () => void;
-  public menuItems: Menu[] = MENUITEMS;
 
   constructor(
     @Inject(ApplicationSlotServiceToken) private applicationSlotService: ApplicationSlotService,
