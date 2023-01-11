@@ -7,5 +7,11 @@ module.exports = {
     // './Template': 'libs/custom-template/src/lib/template/template.component.ts'
     './Template': 'libs/custom-template/src/lib/layout/layout/layout.component'
   },
-  additionalShared: [ '@angular/core', '@angular/router', 'sdk' ]
+  additionalShared: [
+    '@angular/core',
+    '@angular/router',
+    '@angular/material',
+    '@angular/cdk',
+    'sdk'
+  ]
 };

@@ -6,4 +6,11 @@ module.exports = {
   exposes: {
     './Processes': 'libs/process/src/lib/process.component.ts',
   },
+  additionalShared: [
+    '@angular/core',
+    '@angular/router',
+    '@angular/material',
+    '@angular/cdk',
+    'sdk'
+  ]
 };

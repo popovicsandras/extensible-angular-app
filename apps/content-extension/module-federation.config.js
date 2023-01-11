@@ -6,5 +6,11 @@ module.exports = {
   exposes: {
     './Files': 'libs/content/src/lib/files.module.ts',
   },
-  additionalShared: [ '@angular/core', '@angular/router', 'sdk' ]
+  additionalShared: [
+    '@angular/core',
+    '@angular/router',
+    '@angular/material',
+    '@angular/cdk',
+    'sdk'
+  ]
 };

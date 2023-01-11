@@ -9,7 +9,7 @@
       "executor": "@nrwl/angular:package",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
-        "project": "libs/custom-template/ng-package.json"
+        "project": "libs/custom-template/ng-package.js"
       },
       "configurations": {
         "production": {

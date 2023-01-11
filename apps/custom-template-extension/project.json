@@ -5,6 +5,17 @@
   "sourceRoot": "apps/custom-template-extension/src",
   "prefix": "extensible-app",
   "targets": {
+    "prebuild": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "rm -rf apps/custom-template-extension/src/assets/*",
+          "mkdir -p apps/custom-template-extension/src/assets/`node -p \"require('./libs/custom-template/package.json')\".name`",
+          "cp -R ./libs/custom-template/assets/*  apps/custom-template-extension/src/assets/`node -p \"require('./libs/custom-template/package.json')\".name`"
+        ],
+        "parallel": false
+      }
+    },
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
