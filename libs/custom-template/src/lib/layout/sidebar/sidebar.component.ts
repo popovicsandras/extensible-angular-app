@@ -1,12 +1,12 @@
 import { ChangeDetectorRef, Component, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { Menu, MENUITEMS } from '../menu-items';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { MenuComponent } from '../menu/menu.component';
+import { AppSlotDirective } from '@extensible-angular-app/sdk';
 
 @Component({
   standalone: true,
@@ -15,11 +15,11 @@ import { RouterModule } from '@angular/router';
   templateUrl: './sidebar.component.html',
   imports: [
     MatIconModule,
+    AppSlotDirective,
     MatMenuModule,
-    MatListModule,
     CommonModule,
     FormsModule,
-    RouterModule
+    MenuComponent
   ],
   encapsulation: ViewEncapsulation.None
 })
@@ -27,7 +27,6 @@ export class AppSidebarComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
 
   private _mobileQueryListener: () => void;
-  public menuItems: Menu[] = MENUITEMS;
 
   constructor(
     changeDetectorRef: ChangeDetectorRef,

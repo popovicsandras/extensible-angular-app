@@ -3,6 +3,7 @@ import { InjectionToken } from "@angular/core";
 export interface MenuItem {
   title: string;
   url: string;
+  icon?: string;
 }
 
 export interface NavigationService {

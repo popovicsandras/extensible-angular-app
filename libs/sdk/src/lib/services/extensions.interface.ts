@@ -11,6 +11,7 @@ export type ComponentConfig = RemoteConfig<{
   protected: boolean;
   route: string;
   title: string;
+  icon?: string;
 }>;
 
 export interface RemoteConfig<T extends { [key: string]: any; }> {

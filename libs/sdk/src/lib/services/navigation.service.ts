@@ -4,7 +4,7 @@ import { MenuItem, NavigationService } from '../tokens/navigation.interfaces';
 @Injectable()
 export class NavigationServiceImpl implements NavigationService {
 
-  private menuItems: {title: string, url: string}[] = [];
+  private menuItems: MenuItem[] = [];
 
   addMenuItem(item: MenuItem) {
     this.menuItems.push(item);

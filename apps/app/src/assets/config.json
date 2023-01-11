@@ -18,7 +18,8 @@
       "options": {
         "protected": true,
         "route": "files",
-        "title": "Files"
+        "title": "Files",
+        "icon": "view_list"
       }
     },
     {
@@ -30,7 +31,8 @@
       "options": {
         "protected": true,
         "route": "processes",
-        "title": "Processes"
+        "title": "Processes",
+        "icon": "blur_circular"
       }
     }
   ],
