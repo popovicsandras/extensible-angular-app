@@ -4,7 +4,7 @@ import { environment } from './environments/environment';
 if (environment.production) {
   import('./bootstrap');
 } else {
-  fetch('assets/mf.manifest.json')
+  fetch('config/extensions.json')
   .then((res) => res.json())
   .then((definitions) => setRemoteDefinitions(definitions))
   .then(() => import('./bootstrap')

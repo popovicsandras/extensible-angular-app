@@ -1,5 +1,5 @@
 const { resolve } = require('path');
-const config = require('../src/assets/config.json');
+const config = require('../src/config/application.json');
 const readFileSync = require('fs-extra').readFileSync;
 const writeFileSync = require('fs-extra').writeFileSync;
 const ensureDirSync = require('fs-extra').ensureDirSync;

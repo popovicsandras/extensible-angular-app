@@ -23,7 +23,7 @@ export class ExtensionsLoaderService {
   ) {}
 
   load(): Observable<any> {
-    return this.httpClient.get("/assets/config.json")
+    return this.httpClient.get("config/application.json")
       .pipe(
          switchMap((config) => from(this.loadRemoteModule(config as ExtensionConfig)))
       );
