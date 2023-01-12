@@ -6,9 +6,10 @@ module.exports = {
   "lib": {
     "entryFile": "src/index.ts"
   },
-  // Here we could do even smarter, if more complex case is needed, using postcss transformations, etc...
   "assets": [
+    // Here we could do even smarter, if more complex case is needed, using postcss transformations, etc...
     { "input": "assets", "glob": "**/*", "output": "assets/" + name }
+    // "assets"
   ],
   "allowedNonPeerDependencies": [
     "@angular/flex-layout",

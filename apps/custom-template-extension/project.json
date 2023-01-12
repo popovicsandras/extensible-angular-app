@@ -70,8 +70,10 @@
           "namedChunks": true
         }
       },
-      "defaultConfiguration": "production"
+      "defaultConfiguration": "production",
+      "dependsOn": ["^build", "prebuild"]
     },
+
     "serve": {
       "executor": "@nrwl/angular:webpack-dev-server",
       "configurations": {
@@ -86,7 +88,8 @@
       "options": {
         "port": 4202,
         "publicHost": "http://localhost:4202"
-      }
+      },
+      "dependsOn": ["prebuild"]
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
@@ -137,7 +140,7 @@
         ],
         "parallel": false
       },
-      "dependsOn": ["^build", "build"]
+      "dependsOn": ["^build", "prebuild", "build"]
     }
   },
   "tags": []
