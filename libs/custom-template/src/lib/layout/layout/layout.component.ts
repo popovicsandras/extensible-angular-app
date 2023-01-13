@@ -13,6 +13,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
 import { MatButtonModule } from '@angular/material/button';
 import { MenuComponent } from '../menu/menu.component';
+import { CustomErrorComponent } from '../errors/custom-error.component';
 
 @Component({
   standalone: true,
@@ -31,7 +32,8 @@ import { MenuComponent } from '../menu/menu.component';
     MatSidenavModule,
     MatIconModule,
     MatButtonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    CustomErrorComponent
   ],
   encapsulation: ViewEncapsulation.None
 })
@@ -52,11 +54,8 @@ export class AppTemplateComponent implements OnDestroy {
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
 
-    this.applicationSlotService.set(
-      'menu',
-      MenuComponent,
-      {}
-    );
+    this.applicationSlotService.set('menu', MenuComponent, {});
+    this.applicationSlotService.set('403', CustomErrorComponent, { message: 'You are not authorised to access this page.', icon: 'error' });
   }
 
   ngOnDestroy(): void {

@@ -31,5 +31,11 @@ export class RemoteEntryComponent {
       url: 'processes',
       icon: 'blur_circular'
     });
+
+    navigationService.addMenuItem({
+      title: '403',
+      url: '403',
+      icon: 'error'
+    });
   }
 }
