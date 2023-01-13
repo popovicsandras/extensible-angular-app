@@ -4,5 +4,7 @@ export * from './lib/tokens/navigation.interfaces';
 
 export  { ExtensionsLoaderService, loadExtensionsFactory } from "./lib/services/extensions-loader";
 
+export * from './lib/components/slot.component';
 export * from './lib/base-app.module';
-export * from './lib/slot.directive';
+export * from './lib/directives/slot.directive';
+export * from './lib/guards/auth.guard';

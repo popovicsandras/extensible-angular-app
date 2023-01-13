@@ -1,5 +1,5 @@
 import { Directive, Inject, Input, OnInit, Optional, ViewContainerRef } from '@angular/core';
-import { type ApplicationSlotService, ApplicationSlotServiceToken } from './tokens/application-slot.interfaces';
+import { type ApplicationSlotService, ApplicationSlotServiceToken } from '../tokens/application-slot.interfaces';
 
 @Directive({
   standalone: true,

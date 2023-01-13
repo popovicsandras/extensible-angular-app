@@ -3,16 +3,17 @@
 ## Criterias
 
 - [x] Being able to provide custom template
+  - [ ] Being able to customize system level routes, like 403, 404
 - [ ] Being able to package static assets as well in the extensions (images, styles, fonts)
-  - [ ] Being able to server those in local dev mode
-  - [ ] Being able to server those in prod mode
+  - [x] Being able to server those in local dev mode
+  - [x] Being able to server those in prod mode
   - [ ] Being able to server those in preview mode
 - [x] Share services via injection token from an EDK
-- [ ] Routed components
+- [x] Routed components
   - [x] As angular modules
   - [x] As angular standalone components
-  - [ ] As authenticated user
-  - [ ] As unauthenticated user 
+  - [x] As authenticated user
+  - [x] As unauthenticated user 
 - [ ] System plugins
 - [ ] Widgets
 - [ ] Connected extensions

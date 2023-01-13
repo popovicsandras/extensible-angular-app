@@ -46,6 +46,9 @@ class ProductionBuildAssembler {
   processComponents() {
     if (config.components?.length) {
       config.components.forEach((component, key) => {
+
+        const guard = component.options.protected ? `canActivate: [ authGuard ]` : ``;
+
         // We need to wrap each Angular module in a module to be able to lazy load it...
         // Angular quirks: can't lazy load a component/module from node_modules
         if (!component.standalone) {
@@ -59,11 +62,19 @@ class ProductionBuildAssembler {
 
           writeFileSync(resolve(wrappedModulesContainerPath, `${fileName}.ts`), wrappedModuleContent, 'utf8');
 
-          this.routes.push(`{ path: '${component.options.route}', loadChildren: () => import('./.lazy-modules/${fileName}').then(m => m.${wrappedModuleName}) }`);
+          this.routes.push(`{
+            path: '${component.options.route}',
+            loadChildren: () => import('./.lazy-modules/${fileName}').then(m => m.${wrappedModuleName}),
+            ${guard}
+          }`);
         }
         // However it works with standalone components!
         else {
-          this.routes.push(`{ path: '${component.options.route}', loadComponent: () => import('${component.remoteName}').then(m => m.${component.componentName}) }`);
+          this.routes.push(`{
+            path: '${component.options.route}',
+            loadComponent: () => import('${component.remoteName}').then(m => m.${component.componentName}),
+            ${guard}
+          }`);
         }
 
         this.modulesConstructor.push(`
