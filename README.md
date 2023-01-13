@@ -45,7 +45,7 @@ npm ci --legacy-peer-deps
 Next.js served application to demonstrate an extension store. 
 
 ```
-npm start extension-repository
+npm start studio
 ```
 
 ## Poor man's Solution Builder Application 

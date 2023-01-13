@@ -1,6 +1,4 @@
 - Dealing with assets
-  - production build
-  - local dev build
   - preview build
 - More meaningful components for demoing:
   - content list

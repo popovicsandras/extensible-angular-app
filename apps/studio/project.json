@@ -1,7 +1,7 @@
 {
-  "name": "extension-repository",
+  "name": "studio",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/extension-repository",
+  "sourceRoot": "apps/studio",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,12 +9,12 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "root": "apps/extension-repository",
-        "outputPath": "dist/apps/extension-repository"
+        "root": "apps/studio",
+        "outputPath": "dist/apps/studio"
       },
       "configurations": {
         "development": {
-          "outputPath": "apps/extension-repository"
+          "outputPath": "apps/studio"
         },
         "production": {}
       }
@@ -23,17 +23,17 @@
       "executor": "@nrwl/next:server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "extension-repository:build",
+        "buildTarget": "studio:build",
         "dev": true,
         "port": 4000
       },
       "configurations": {
         "development": {
-          "buildTarget": "extension-repository:build:development",
+          "buildTarget": "studio:build:development",
           "dev": true
         },
         "production": {
-          "buildTarget": "extension-repository:build:production",
+          "buildTarget": "studio:build:production",
           "dev": false
         }
       }
@@ -41,14 +41,14 @@
     "export": {
       "executor": "@nrwl/next:export",
       "options": {
-        "buildTarget": "extension-repository:build:production"
+        "buildTarget": "studio:build:production"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/extension-repository/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/studio/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },
