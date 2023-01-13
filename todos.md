@@ -1,7 +1,7 @@
 - Dealing with assets
-  - package them into the extension
-  - copy them into assets
-- Move config from assets to config directory
+  - production build
+  - local dev build
+  - preview build
 - More meaningful components for demoing:
   - content list
   - process list

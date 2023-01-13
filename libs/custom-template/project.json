@@ -9,7 +9,7 @@
       "executor": "@nrwl/angular:package",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
-        "project": "libs/custom-template/ng-package.js"
+        "project": "libs/custom-template/ng-package.json"
       },
       "configurations": {
         "production": {
@@ -20,6 +20,13 @@
         }
       },
       "defaultConfiguration": "production"
+    },
+    "package": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc ./libs/custom-template/assets/index.ts --outDir ./dist/libs/custom-template/assets"
+      },
+      "dependsOn": ["build"]
     }
   },
   "tags": []

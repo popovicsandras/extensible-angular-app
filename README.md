@@ -4,6 +4,9 @@
 
 - [x] Being able to provide custom template
 - [ ] Being able to package static assets as well in the extensions (images, styles, fonts)
+  - [ ] Being able to server those in local dev mode
+  - [ ] Being able to server those in prod mode
+  - [ ] Being able to server those in preview mode
 - [x] Share services via injection token from an EDK
 - [ ] Routed components
   - [x] As angular modules
@@ -12,7 +15,10 @@
   - [ ] As unauthenticated user 
 - [ ] System plugins
 - [ ] Widgets
-- [ ] Connected extensions (how to define contracts, expose slots, etc...)
+- [ ] Connected extensions
+  - [ ] exposed slots
+  - [ ] exposed services?
+  - [ ] exposed interfaces?
 - [ ] Nextjs market for demoing
 - [ ] Nextjs Studio
 - [ ] Trying to use anything else than Material?
@@ -20,6 +26,10 @@
 - [x] Assembling in compilation time, docker image creation
 - [ ] SSR
 - [ ] Trying to use a React component?
+- [ ] Differentiate between applications:
+  - [ ] Extension developer sandbox
+  - [ ] Preview mode
+  - [ ] Production mode builder
 
 ## Setup
 

@@ -8,7 +8,10 @@
     "prebuild": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "node apps/app/scripts/assemble-production-build.js"
+        "commands": [
+          "ts-node apps/app/scripts/assemble-assets.ts",
+          "node apps/app/scripts/assemble-production-build.js"
+        ]
       }
     },
     "build": {
@@ -24,7 +27,8 @@
         "assets": [
           "apps/app/src/favicon.ico",
           "apps/app/src/config/extensions.json",
-          "apps/app/src/config/application.json"
+          "apps/app/src/config/application.json",
+          "apps/app/src/assets"
         ],
         "styles": ["apps/app/src/styles.scss"],
         "scripts": [],
