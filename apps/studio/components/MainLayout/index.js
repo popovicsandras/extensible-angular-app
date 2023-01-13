@@ -7,7 +7,7 @@ import { Box, Toolbar } from '@mui/material';
 // project import
 import Drawer from './Drawer';
 import Header from './Header';
-import navigation from 'menu-items';
+import navigation from './Drawer/DrawerContent/Navigation/menu-items';
 import Breadcrumbs from 'components/@extended/Breadcrumbs';
 
 // ==============================|| MAIN LAYOUT ||============================== //

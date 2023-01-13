@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
-import { Link } from 'next/link';
+import Link from 'next/link';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -17,12 +17,12 @@ const NavItem = ({ item, level }) => {
         itemTarget = '_blank';
     }
 
-    // let listItemProps = { component: forwardRef(function Sanyi(props, ref) {
-    //   return <Link ref={ref} {...props} href={item.url} />;
-    // }) };
-    // if (item?.external) {
+    let listItemProps = { component: forwardRef(function Sanyi(props, ref) {
+      return <Link ref={ref} {...props} href={item.url} />;
+    }) };
+    if (item?.external) {
         let listItemProps = { component: 'a', href: item.url, target: itemTarget };
-    // }
+    }
 
     const itemHandler = (id) => {
         console.log(id)

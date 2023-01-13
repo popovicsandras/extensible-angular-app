@@ -15,7 +15,8 @@ import {
     Stack,
     Tab,
     Tabs,
-    Typography
+    Typography,
+    Avatar
 } from '@mui/material';
 
 // project import
@@ -25,7 +26,6 @@ import ProfileTab from './ProfileTab';
 import SettingTab from './SettingTab';
 
 // assets
-import avatar1 from 'public/assets/images/users/avatar-1.png';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 
 // tab panel wrapper
@@ -96,6 +96,7 @@ const Profile = () => {
                 onClick={handleToggle}
             >
                 <Stack direction="row" spacing={2} alignItems="center" sx={{ p: 0.5 }}>
+                    <Avatar alt="Remy Sharp" src="assets/images/users/avatar-1.png" sx={{ width: 32, height: 32 }} />
                     <Typography variant="subtitle1">John Doe</Typography>
                 </Stack>
             </ButtonBase>

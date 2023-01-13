@@ -2,7 +2,6 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import MainLayout from '../components/MainLayout';
 import ThemeCustomization from '../themes';
-import './styles.css';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
