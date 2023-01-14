@@ -21,7 +21,13 @@
   - [ ] exposed services?
   - [ ] exposed interfaces?
 - [ ] Nextjs market for demoing
+  - [ ] List
+  - [ ] Upload
 - [ ] Nextjs Studio
+  - [ ] Configure app from list of extensions
+  - [ ] Read extension schema and show editable form
+  - [ ] Persist extension configuration
+  - [ ] Build production mode
 - [ ] Trying to use anything else than Material?
 - [ ] What about different angular versions?
 - [x] Assembling in compilation time, docker image creation

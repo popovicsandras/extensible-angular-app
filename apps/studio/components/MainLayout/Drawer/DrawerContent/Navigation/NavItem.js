@@ -29,7 +29,7 @@ const NavItem = ({ item, level }) => {
     };
 
     const Icon = item.icon;
-    const itemIcon = item.icon ? <Icon style={{ fontSize: drawerOpen ? '1rem' : '1.25rem' }} /> : false;
+    const itemIcon = item.icon ? <Icon style={{ fontSize: drawerOpen ? '1.25rem' : '1.15rem', position: 'relative', top: '-1px', marginRight: '16px' }} /> : false;
 
     const isSelected = false;
 

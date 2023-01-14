@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Stack, Chip } from '@mui/material';
+import { Stack } from '@mui/material';
 
 // project import
 import DrawerHeaderStyled from './DrawerHeaderStyled';
@@ -18,11 +18,7 @@ const DrawerHeader = ({ open }) => {
         <DrawerHeaderStyled theme={theme} open={open}>
             <Stack direction="row" spacing={1} alignItems="center">
                 <Logo />
-                <Chip
-                    label="v1.1.9"
-                    size="small"
-                    sx={{ height: 16, '& .MuiChip-label': { fontSize: '0.625rem', py: 0.25 } }}
-                />
+                <div css={{paddingTop: '3px', marginLeft: '-70px !important', fontSize: '1.3rem', fontWeight: 'bold'}}>Magic Studio</div>
             </Stack>
         </DrawerHeaderStyled>
     );

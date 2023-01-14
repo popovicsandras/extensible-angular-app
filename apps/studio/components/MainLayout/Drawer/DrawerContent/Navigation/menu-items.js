@@ -1,4 +1,16 @@
-import { DashboardOutlined, AppstoreOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import {
+  DashboardOutlined,
+  FormOutlined,
+  FileOutlined
+} from '@ant-design/icons';
+
+import MemoryIcon from '@mui/icons-material/Memory';
+import ExtensionIcon from '@mui/icons-material/Extension';
+import WebIcon from '@mui/icons-material/Web';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import JavascriptIcon from '@mui/icons-material/Javascript';
+import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
+import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 
 const menuItems = {
     items: [
@@ -27,21 +39,70 @@ const menuItems = {
                 title: 'Store',
                 type: 'item',
                 url: '/store',
-                icon: AppstoreOutlined,
+                icon: LocalGroceryStoreIcon,
             }
         ]
       },
       {
         id: 'utilities',
-        title: 'Applications',
+        title: 'Project',
         type: 'group',
         children: [
             {
-                id: 'util-typography',
-                title: 'List of Applications',
+                id: 'project-1',
+                title: 'Processes',
                 type: 'item',
-                url: '/applications',
-                icon: UnorderedListOutlined
+                url: '/',
+                icon: MemoryIcon
+            },
+            {
+                id: 'project-2',
+                title: 'Forms',
+                type: 'item',
+                url: '/',
+                icon: FormOutlined
+            },
+            {
+                id: 'project-3',
+                title: 'Connectors',
+                type: 'item',
+                url: '/',
+                icon: ExtensionIcon
+            },
+            {
+                id: 'project-4',
+                title: 'Decision tables',
+                type: 'item',
+                url: '/',
+                icon: PsychologyIcon
+            },
+            {
+                id: 'project-5',
+                title: 'Ui Designer',
+                type: 'item',
+                url: '/ui',
+                icon: WebIcon
+            },
+            {
+                id: 'project-6',
+                title: 'Files',
+                type: 'item',
+                url: '/',
+                icon: FileOutlined
+            },
+            {
+                id: 'project-7',
+                title: 'Scripts',
+                type: 'item',
+                url: '/',
+                icon: JavascriptIcon
+            },
+            {
+                id: 'project-8',
+                title: 'Triggers',
+                type: 'item',
+                url: '/',
+                icon: PlayCircleFilledWhiteIcon
             }
         ]
       }
