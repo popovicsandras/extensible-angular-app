@@ -1,6 +1,5 @@
 import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Menu, MENUITEMS } from '../menu-items';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
@@ -21,14 +20,14 @@ import { Observable } from 'rxjs';
 })
 export class MenuComponent {
   public loggedIn$: Observable<boolean>;
-  public menuItems: MenuItem[];
+  public menuItems$: Observable<MenuItem[]>;
 
   constructor(
     @Inject(AuthenticationServiceToken) private authService: AuthenticationService,
     @Inject(NavigationServiceToken) navigationService: NavigationService
   ) {
     this.loggedIn$ = authService.loggedIn$;
-    this.menuItems = navigationService.getMenuItems();
+    this.menuItems$ = navigationService.getMenuItems();
   }
 
   onLogoutClick(event: Event) {

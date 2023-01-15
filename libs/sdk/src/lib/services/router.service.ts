@@ -45,7 +45,8 @@ export class RouterService {
         this.navigationService.addMenuItem({
           title: component.options.title,
           url: component.options.route,
-          icon: component.options.icon
+          icon: component.options.icon,
+          protected: component.options.protected
         });
       });
 

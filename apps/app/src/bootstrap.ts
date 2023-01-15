@@ -17,7 +17,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     importProvidersFrom(
       BrowserAnimationsModule,
-      RouterModule.forRoot(appRoutes),
+      RouterModule.forRoot(appRoutes, { onSameUrlNavigation: 'reload' }),
       BaseAppModule.forRoot(),
       HttpClientModule,
     ),

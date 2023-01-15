@@ -17,25 +17,29 @@ export class RemoteEntryComponent {
     navigationService.addMenuItem({
       title: 'Dashboard',
       url: 'dashboard',
-      icon: 'av_timer'
+      icon: 'av_timer',
+      protected: false
     });
 
     navigationService.addMenuItem({
       title: 'Files',
       url: 'files',
-      icon: 'view_list'
+      icon: 'view_list',
+      protected: false
     });
 
     navigationService.addMenuItem({
       title: 'Processes',
       url: 'processes',
-      icon: 'blur_circular'
+      icon: 'blur_circular',
+      protected: false
     });
 
     navigationService.addMenuItem({
       title: '403',
       url: '403',
-      icon: 'error'
+      icon: 'error',
+      protected: false
     });
   }
 }
