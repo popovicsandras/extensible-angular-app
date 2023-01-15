@@ -5,18 +5,9 @@ import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
 import Chip from "@mui/material/Chip";
 import Rating from "@mui/material/Rating";
+import { type Package } from "server/store";
 
-export interface ExtensionProps {
-  name: string;
-  package: string;
-  thumbnail: string;
-  version: string;
-  cost: number;
-  rating: number;
-  type: string;
-}
-
-export default function Extension(options: ExtensionProps) {
+export default function Extension(options: Package) {
   return (
     <Card sx={{ display: 'flex', width: '32%' }}>
     <CardMedia
@@ -33,7 +24,7 @@ export default function Extension(options: ExtensionProps) {
             <Chip label={`v${options.version}`} size="small" sx={{ height: 16, marginLeft: '4px', '& .MuiChip-label': { fontSize: '0.625rem', py: 0.25, alignSelf: 'flex-start', paddingTop: '1px'} }}/>
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
-            {options.package}
+            {options.scope}
           </Typography>
         </div>
       </CardContent>

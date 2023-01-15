@@ -4,10 +4,10 @@ import { getStorePath } from "server/store";
 
 export default function handler(req, res) {
   console.log(req.query);
-  const { scope, extension, file } = req.query;
+  const { scope, extension } = req.query;
 
   // Hello OS filesystem security... 🤣
-  const path = resolve(getStorePath(), scope, extension, 'mf', file);
+  const path = resolve(getStorePath(), scope, extension, 'thumbnail.png');
   if (existsSync(path)) {
     res.status(200).sendFile(path);
   } else {

@@ -6,6 +6,7 @@
     "entryFile": "src/index.ts"
   },
   "assets": [
+    "thumbnail.png",
     { "input": "assets", "glob": "**/!(index.ts)", "output": "assets/" }
   ],
   "allowedNonPeerDependencies": [
