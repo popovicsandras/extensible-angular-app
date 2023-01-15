@@ -1,7 +1,8 @@
 import Button from "@mui/material/Button";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { Package } from "server/store";
 
-export default function Upload() {
+export default function Upload({onSuccess}: {onSuccess: (pkg: Package) => void }) {
 
   const uploadToServer = async (event) => {
     const packageArchieve = event.target.files[0];
@@ -13,7 +14,8 @@ export default function Upload() {
         method: "POST",
         body
       });
-      const data = await response.json();
+      const pkg: Package = await response.json();
+      onSuccess(pkg);
     }
   };
 

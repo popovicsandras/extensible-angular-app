@@ -3,7 +3,6 @@ import { resolve } from "path";
 import { getStorePath } from "server/store";
 
 export default function handler(req, res) {
-  console.log(req.query);
   const { scope, extension, file } = req.query;
 
   // Hello OS filesystem security... 🤣

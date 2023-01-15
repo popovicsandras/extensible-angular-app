@@ -10,6 +10,10 @@ import { getStorePath, type Package } from "server/store";
 export default function Store({pkgs}: {pkgs: Package[]}) {
   const [packages, setPackages] = useState(pkgs);
 
+  const addPackage = (pkg: Package) => {
+    setPackages([...packages, pkg])
+  }
+
   const template = packages.filter((item) => item.type === 'template');
   const components = packages.filter((item) => item.type === 'component');
   const widgets = packages.filter((item) => item.type === 'widget');
@@ -29,7 +33,7 @@ export default function Store({pkgs}: {pkgs: Package[]}) {
       </Grid>
 
       <Grid item sx={{display: 'flex', justifyContent: 'flex-end', width: '100%', marginRight: '18px'}}>
-        <Upload />
+        <Upload onSuccess={addPackage} />
       </Grid>
 
       {grouppedPackages.map((container) => (
