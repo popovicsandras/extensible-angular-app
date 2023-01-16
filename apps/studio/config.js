@@ -1,8 +1,8 @@
 // ==============================|| THEME CONFIG  ||============================== //
 
 const config = {
-    defaultPath: '/dashboard/default',
-    fontFamily: `'Public Sans', sans-serif`,
+    defaultPath: '/',
+    fontFamily: `Roboto, 'Public Sans', sans-serif`,
     i18n: 'en',
     miniDrawer: false,
     container: true,

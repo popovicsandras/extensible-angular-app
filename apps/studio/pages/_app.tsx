@@ -8,6 +8,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Welcome to studio!</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
       </Head>
       <ThemeCustomization>
         <MainLayout>

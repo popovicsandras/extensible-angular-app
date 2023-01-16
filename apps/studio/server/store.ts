@@ -2,6 +2,7 @@ import { join } from "path";
 
 export interface Package {
   name: string;
+  package: string;
   scope: string;
   thumbnail: string;
   version: string;

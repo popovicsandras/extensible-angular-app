@@ -1,6 +1,8 @@
 export interface ExtensionConfig {
   template: TemplateConfig;
   components: ComponentConfig[];
+  widgets: WidgetConfig[];
+  plugins: PluginConfig[];
 }
 
 export type TemplateConfig = RemoteConfig<{
@@ -14,11 +16,21 @@ export type ComponentConfig = RemoteConfig<{
   icon?: string;
 }>;
 
+export type WidgetConfig = RemoteConfig<{
+  title: string;
+  slot: string;
+}>;
+
+export type PluginConfig = RemoteConfig<{
+  title: string;
+}>;
+
 export interface RemoteConfig<T extends { [key: string]: any; }> {
+  uuid: string;
   displayName: string;
   remoteName: string;
   exposedModule: string;
   componentName: string;
-  standalone: boolean;
+  standalone?: boolean;
   options: T;
 }

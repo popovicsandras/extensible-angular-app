@@ -1,6 +1,7 @@
 export * from './lib/tokens/application-slot.interfaces';
 export * from './lib/tokens/authentication.interfaces';
 export * from './lib/tokens/navigation.interfaces';
+export * from './lib/services/extensions.interface';
 
 export  { ExtensionsLoaderService, loadExtensionsFactory } from "./lib/services/extensions-loader";
 

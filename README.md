@@ -20,10 +20,10 @@
   - [ ] exposed slots
   - [ ] exposed services?
   - [ ] exposed interfaces?
-- [ ] Nextjs market for demoing
-  - [ ] List
-  - [ ] Upload
-- [ ] Nextjs Studio
+- [x] Nextjs market for demoing
+  - [x] List
+  - [x] Upload
+- [ ] Demo Nextjs for demoing
   - [ ] Configure app from list of extensions
   - [ ] Read extension schema and show editable form
   - [ ] Persist extension configuration
