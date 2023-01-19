@@ -10,7 +10,45 @@
     "tslib": "^2.3.0"
   },
   "extension": {
-    "name": "Content engine",
-    "type": "component"
+    "type": "component",
+    "standalone": false,
+    "displayName": "Content engine",
+    "exposedModules": [
+      {
+        "moduleName": "./Files",
+        "componentName": "FilesModule"
+      }
+    ],
+    "schema": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "properties": {
+        "protected": {
+          "type": "boolean",
+          "default": false
+        },
+        "route": {
+          "type": "string",
+          "description": "The route path the component will be mounted on.",
+          "message": "Route must be specified for ROUTED components."
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the navigational item pointing to the routed component."
+        },
+        "icon": {
+          "type": "string",
+          "description": "The icon of the navigational item pointing to the routed component."
+        },
+        "folderId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "protected",
+        "route",
+        "folderId"
+      ]
+    }
   }
 }

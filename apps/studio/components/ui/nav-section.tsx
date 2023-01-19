@@ -11,11 +11,13 @@ interface NavSectionProps {
   blink: string;
   name: string;
   open: boolean;
+  current: string | null;
   setOpen: Dispatch<SetStateAction<boolean>>;
+  onClick: (uuid: string) => void;
   items: ExtensionMenuItem[];
 }
 
-export default function NavSection({icon: Icon, blink, name, open, setOpen, items}: PropsWithChildren<NavSectionProps>) {
+export default function NavSection({icon: Icon, blink, name, open, setOpen, items, current, onClick}: PropsWithChildren<NavSectionProps>) {
 
   const expandCollapse = () => setOpen(!open);
 
@@ -39,7 +41,10 @@ export default function NavSection({icon: Icon, blink, name, open, setOpen, item
                 name={item.name}
                 label={item.label}
                 icon={item.icon ?? Icon}
-                blink={blink}>
+                blink={blink}
+                current={current}
+                onClick={onClick}
+                >
               </NavItem>
             )
           )}

@@ -7,7 +7,7 @@ import Chip from "@mui/material/Chip";
 import Rating from "@mui/material/Rating";
 import { type Package } from "server/store";
 
-export default function Extension(options: {onClick?: () => void} & Package) {
+export default function Extension(options: {onClick?: () => void} & Omit<Package, 'package' | 'standalone' | 'exposedModules'>) {
   return (
     <Card sx={{ display: 'flex', width: '32%', ...(options.onClick ? {cursor: 'pointer'} : {}) }} onClick={options.onClick}>
       <CardMedia
@@ -19,7 +19,7 @@ export default function Extension(options: {onClick?: () => void} & Package) {
         <CardContent sx={{ display: 'flex', flex: '1 0 auto', justifyContent: "space-between", flexDirection: 'row', flexWrap: 'nowrap' }}>
           <div css={{display: 'flex', flex: '0 1 auto', flexDirection: 'column'}}>
             <Typography component="div" variant="h5">
-              {options.name}
+              {options.displayName}
               <Chip label={`v${options.version}`} size="small" sx={{ height: 16, marginLeft: '4px', '& .MuiChip-label': { fontSize: '0.625rem', py: 0.25, alignSelf: 'flex-start', paddingTop: '1px'} }}/>
             </Typography>
             <Typography variant="subtitle1" color="text.secondary" component="div">

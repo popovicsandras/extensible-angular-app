@@ -13,7 +13,34 @@
     "material-design-icons": "^3.0.1"
   },
   "extension": {
-    "name": "Sirius template",
-    "type": "template"
+    "type": "template",
+    "standalone": false,
+    "displayName": "Sirius template",
+    "exposedModules": [
+      {
+        "moduleName": "./Template",
+        "componentName": "AppTemplateComponent"
+      }
+    ],
+    "schema": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "The application's title.",
+          "message": "Application's title must be specified"
+        },
+        "headerColor": {
+          "type": "string",
+          "description": "The hex color code of the header or 'default'.",
+          "default": "default"
+        }
+      },
+      "required": [
+        "title",
+        "headerColor"
+      ]
+    }
   }
 }

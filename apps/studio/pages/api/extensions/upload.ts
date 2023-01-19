@@ -18,15 +18,21 @@ const post = async (req, res) => {
   form.parse(req, async function (err, fields, files) {
     const pkgJson = await saveFile(files.file);
 
-    return res.status(201).json({
-      name: pkgJson.extension.name,
+    const response: Package = {
+      displayName: pkgJson.extension.displayName,
       scope: pkgJson.name.split('/')[0],
+      package: pkgJson.name.split('/')[1],
       thumbnail: `/api/thumbnail/${pkgJson.name}`,
       version: pkgJson.version,
       cost: pkgJson.name === '@extensible-angular-app/custom-template' ? 23.9 : 0,
       rating: Math.random() * 5,
-      type: pkgJson.extension.type
-    } as Package);
+      type: pkgJson.extension.type,
+      standalone: pkgJson.extension.standalone,
+      exposedModules: pkgJson.extension.exposedModules,
+      schema: pkgJson.extension.schema
+    };
+
+    return res.status(201).json(response);
   });
 };
 
@@ -37,7 +43,7 @@ const saveFile = async (file) => {
   await decompress(file.filepath, tmpDir, {plugins: [ decompressTargz() ]});
 
   const packageDir = resolve(tmpDir, 'package');
-  const packageJson = JSON.parse(await readFile(resolve(packageDir, 'package.json')));
+  const packageJson = JSON.parse(await readFile(resolve(packageDir, 'package.json'), 'utf8'));
   const {name: packageName} = packageJson;
   const [scope, packageFolder] = packageName.split('/');
   const destDir = resolve(getStorePath(), scope);

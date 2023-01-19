@@ -18,6 +18,8 @@ import { UIConfiguration } from "services/ui-configuration";
 import { ExtensionConfig } from "@extensible-angular-app/sdk";
 import { useEffect, useMemo, useState } from "react";
 import NavItem from "components/ui/nav-item";
+import ExtensionEditor from "components/ui/extension-editor";
+import { ConfigContext } from "components/ui/config-context";
 
 const config: ExtensionConfig = {
   "template":   {
@@ -63,26 +65,27 @@ const config: ExtensionConfig = {
   "plugins": []
 };
 
-export default function Applications({pkgs}: {pkgs: Package[]}) {
+export default function UiDesigner({pkgs}: {pkgs: Package[]}) {
   const configuration = useMemo(() => new UIConfiguration(), [])
 
   useEffect(() => {
     configuration.parse(config);
   }, [configuration]);
 
+  const [changeCount, setChangeCount] = useState(0);
   const [componentsOpened, setComponentsOpened] = useState(false);
   const [widgetsOpened, setWidgetsOpened] = useState(false);
   const [pluginsOpened, setPluginsOpened] = useState(false);
 
-  const [extension, setExtension] = useState<string | null>(null);
+  const [selectedUuid, setSelectedUuid] = useState<string | null>(null);
   const [newlyAddedExtensionUuid, setNewlyAddedExtensionUuid] = useState<string | null>(null);
   const [template, setTemplate] = useState(configuration.getTemplate());
   const [components, setComponents] = useState(configuration.getComponents());
   const [widgets, setWidgets] = useState(configuration.getWidgets());
   const [plugins, setPlugins] = useState(configuration.getPlugins());
 
-  const onExtensionSelection = (pkg: Package) => {
-    const newExtension = configuration.add(pkg);
+  const onExtensionAddition = (pkg: Package) => {
+    const newExtensionUuid = configuration.add(pkg);
 
     if (pkg.type === 'template') {
       setTemplate(configuration.getTemplate());
@@ -97,41 +100,39 @@ export default function Applications({pkgs}: {pkgs: Package[]}) {
       setPluginsOpened(true);
     }
 
-    setNewlyAddedExtensionUuid(newExtension.uuid);
-    setExtension(newExtension.uuid);
+    setNewlyAddedExtensionUuid(newExtensionUuid);
+    setSelectedUuid(newExtensionUuid);
+  }
+
+  const onExtensionClick = (uuid: string) => {
+    setSelectedUuid(uuid);
   }
 
   return (
-    <Grid container rowSpacing={4.5} columnSpacing={2.75}>
-
-      <Grid item xs={12} sx={{ mb: -2.25, position: 'sticky', top: '50px', backgroundColor: '#fafafb', paddingBottom: '24px' }}>
-        <div css={{display: 'flex', gap: '12px'}}>
-          <WebIcon sx={{ fontSize: 40 }} />
-          <Typography variant="h4" css={{ lineHeight: '40px'}}>UI Designer</Typography>
-        </div>
+    <ConfigContext.Provider value={configuration}>
+      <Grid container rowSpacing={4.5} columnSpacing={2.75}>
+        <Grid item xs={12} sx={{ mb: -2.25, position: 'sticky', top: '50px', backgroundColor: '#fafafb', paddingBottom: '24px' }}>
+          <div css={{display: 'flex', gap: '12px'}}>
+            <WebIcon sx={{ fontSize: 40 }} />
+            <Typography variant="h4" css={{ lineHeight: '40px'}}>UI Designer</Typography>
+          </div>
+        </Grid>
+        <Grid item sx={{display: 'flex', gap: '12px', width: '100%', minHeight: 'calc(100vh - 160px)', maxHeight: 'calc(100vh - 160px)'}}>
+          <Card sx={{ minWidth: 350, overflow: 'auto' }} >
+            <CardContent>
+              <ExtensionSelector packages={pkgs} onClick={onExtensionAddition} />
+              <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} component="nav">
+                <NavItem blink={newlyAddedExtensionUuid} name="Template" icon={TableChartIcon} uuid={template.uuid} current={selectedUuid} onClick={onExtensionClick} />
+                <NavSection blink={newlyAddedExtensionUuid} open={componentsOpened} setOpen={setComponentsOpened} name="Routes" icon={AltRouteIcon} items={components} current={selectedUuid} onClick={onExtensionClick} />
+                <NavSection blink={newlyAddedExtensionUuid} open={widgetsOpened} setOpen={setWidgetsOpened} name="Widgets" icon={WidgetsIcon} items={widgets} current={selectedUuid} onClick={onExtensionClick} />
+                <NavSection blink={newlyAddedExtensionUuid} open={pluginsOpened} setOpen={setPluginsOpened} name="Plugins" icon={SettingsInputComponentIcon} items={plugins} current={selectedUuid} onClick={onExtensionClick} />
+              </List>
+            </CardContent>
+          </Card>
+          { selectedUuid && <ExtensionEditor uuid={selectedUuid} update={setChangeCount} /> }
+        </Grid>
       </Grid>
-
-      <Grid item sx={{display: 'flex', gap: '12px', width: '100%', minHeight: 'calc(100vh - 160px)', maxHeight: 'calc(100vh - 160px)'}}>
-        <Card sx={{ minWidth: 275, overflow: 'auto' }} >
-          <CardContent>
-            <ExtensionSelector packages={pkgs} onClick={onExtensionSelection} />
-            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} component="nav">
-              <NavItem blink={newlyAddedExtensionUuid} name="Template" icon={TableChartIcon} uuid={template.uuid} />
-              <NavSection blink={newlyAddedExtensionUuid} open={componentsOpened} setOpen={setComponentsOpened} name="Routes" icon={AltRouteIcon} items={components} />
-              <NavSection blink={newlyAddedExtensionUuid} open={widgetsOpened} setOpen={setWidgetsOpened} name="Widgets" icon={WidgetsIcon} items={widgets} />
-              <NavSection blink={newlyAddedExtensionUuid} open={pluginsOpened} setOpen={setPluginsOpened} name="Plugins" icon={SettingsInputComponentIcon} items={plugins} />
-            </List>
-          </CardContent>
-        </Card>
-        {extension && <Card sx={{ flex: '1 0 auto' }}>
-          <CardContent>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-              Word of the Day
-            </Typography>
-          </CardContent>
-        </Card>}
-      </Grid>
-    </Grid>
+    </ConfigContext.Provider>
   );
 }
 

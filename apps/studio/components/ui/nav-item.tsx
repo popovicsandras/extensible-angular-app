@@ -4,14 +4,16 @@ import { OverridableComponent } from "@mui/material/OverridableComponent";
 import GenericIcon from '@mui/material/Icon';
 
 interface NavItemProps {
+  uuid: string;
+  current: string | null;
   icon: OverridableComponent<SvgIconTypeMap> | string;
   blink: string;
   name: string;
   label?: string;
-  uuid: string;
+  onClick: (uuid: string) => void;
 }
 
-export default function NavItem({icon, name, label, uuid, blink}: PropsWithChildren<NavItemProps>) {
+export default function NavItem({icon, name, label, uuid, blink, current, onClick}: PropsWithChildren<NavItemProps>) {
   const blinkedList = useRef([] as string[]);
 
   blinkedList.current = [
@@ -21,10 +23,10 @@ export default function NavItem({icon, name, label, uuid, blink}: PropsWithChild
 
   const newItemAddedTheFirstTime = blinkedList.current[blinkedList.current.length - 1] !== blinkedList.current[blinkedList.current.length - 2];
 
-  const ElementWrapper = ({children, blink, ...props}) => {
+  const ElementWrapper = ({children, blink, uuid, current, onClick, ...props}) => {
     if (!blink) {
       return (
-        <ListItemButton draggable {...props}>
+        <ListItemButton selected={current === uuid} onClick={() => onClick(uuid)} draggable {...props}>
           {children}
         </ListItemButton>
       );
@@ -32,17 +34,17 @@ export default function NavItem({icon, name, label, uuid, blink}: PropsWithChild
 
     return (
       <Grow in={true} timeout={500}>
-        <ListItemButton draggable {...props}>
+        <ListItemButton selected={current === uuid} onClick={() => onClick(uuid)} draggable {...props}>
           {children}
         </ListItemButton>
       </Grow>
     );
   };
 
-  const Icon: any = typeof icon === 'string' ? ({...props}) => <GenericIcon {...props}>{icon}</GenericIcon> : icon;
+  const Icon = typeof icon === 'string' ? ({...props}) => <GenericIcon {...props}>{icon}</GenericIcon> : icon;
 
   return (
-    <ElementWrapper key={uuid} blink={blink === uuid && newItemAddedTheFirstTime}>
+    <ElementWrapper key={uuid} uuid={uuid} current={current} onClick={onClick} blink={blink === uuid && newItemAddedTheFirstTime}>
       <ListItemIcon sx={{minWidth: '40px'}}>
         <Icon sx={{fontSize: '20px'}} />
       </ListItemIcon>

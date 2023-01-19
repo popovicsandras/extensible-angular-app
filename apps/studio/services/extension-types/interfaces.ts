@@ -10,9 +10,10 @@ export interface ExtensionMenuItem{
 interface GenericExtensionConfiguration {
   uuid: string;
   displayName: string;
-  // remoteName: string; --> package.scope + '/' + package.name
-  // exposedModule: string; --> one from package.exposedModules
-  // componentName: string; --> one from package.exposedModules
+  remoteName: string;
+  exposedModule: string;
+  componentName: string;
+  standalone: boolean;
   options?: Record<string, unknown>;
   package: Package;
 }

@@ -1,7 +1,7 @@
 import { join } from "path";
 
 export interface Package {
-  name: string;
+  displayName: string;
   scope: string;
   package: string;
   thumbnail: string;
@@ -9,10 +9,12 @@ export interface Package {
   cost: number;
   rating: number
   type: "template" | "component" | "widget" | "plugin";
+  standalone: boolean,
   exposedModules: {
     moduleName: string;
     componentName: string;
-  };
+  }[],
+  schema: Record<string, unknown>
 }
 
 export function getStorePath() {

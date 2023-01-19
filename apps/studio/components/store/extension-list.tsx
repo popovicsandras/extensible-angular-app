@@ -30,8 +30,8 @@ export default function ExtensionList({pkgs, onClick}: {pkgs: Package[], onClick
               {
                 ...container.packages.map((item) => <Extension
                   onClick={onClick ? () => onClick(item) : null}
-                  key={item.name}
-                  name={item.name}
+                  key={item.scope+item.package}
+                  displayName={item.displayName}
                   scope={item.scope}
                   thumbnail={item.thumbnail}
                   version={item.version}

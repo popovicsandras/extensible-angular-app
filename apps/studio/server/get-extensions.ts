@@ -10,16 +10,19 @@ export function getExtensions() {
   readdirSync(storePath).forEach(file => {
     const scopeDir = resolve(storePath, file);
     readdirSync(scopeDir).forEach(pkg => {
-      const pkgJson = JSON.parse(readFileSync(resolve(scopeDir, pkg, 'package.json')));
+      const pkgJson = JSON.parse(readFileSync(resolve(scopeDir, pkg, 'package.json'), 'utf8'));
       packages.push({
-        name: pkgJson.extension.name,
+        displayName: pkgJson.extension.displayName,
         package: pkg,
         scope: file,
         thumbnail: `/api/thumbnail/${pkgJson.name}`,
         version: pkgJson.version,
         cost: pkgJson.name === '@extensible-angular-app/custom-template' ? 23.9 : 0,
         rating: Math.random() * 5,
-        type: pkgJson.extension.type
+        type: pkgJson.extension.type,
+        standalone: pkgJson.extension.standalone,
+        exposedModules: pkgJson.extension.exposedModules,
+        schema: pkgJson.extension.schema
       })
     });
   });
@@ -29,7 +32,7 @@ export function getExtensions() {
       pkgs: [
         ...packages,
         ...fakePackages
-      ] as Package[]
+      ]
     }
   };
 }
