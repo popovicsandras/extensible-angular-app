@@ -18,8 +18,8 @@ interface GenericExtensionConfiguration {
   package: Package;
 }
 
-export interface ComponentConfiguration extends GenericExtensionConfiguration { type: "component" }
 export interface TemplateConfiguration extends GenericExtensionConfiguration { type: "template" }
+export interface ComponentConfiguration extends GenericExtensionConfiguration { type: "component" }
 export interface WidgetConfiguration extends GenericExtensionConfiguration { type: "widget" }
 export interface PluginConfiguration extends GenericExtensionConfiguration { type: "plugin" }
 

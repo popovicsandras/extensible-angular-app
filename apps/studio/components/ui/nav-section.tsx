@@ -1,25 +1,34 @@
 import { Collapse, List, ListItemButton, ListItemIcon, ListItemText, SvgIconTypeMap } from "@mui/material";
-import { Dispatch, PropsWithChildren, SetStateAction } from "react";
+import { PropsWithChildren, useContext, useEffect, useMemo, useState } from "react";
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 import { ExtensionMenuItem } from '../../services/extension-types/interfaces';
 import NavItem from "./nav-item";
+import { ConfigurationStoreContext } from "./config-context";
 
 interface NavSectionProps {
   icon: OverridableComponent<SvgIconTypeMap> | string;
   blink: string;
   name: string;
-  open: boolean;
   current: string | null;
-  setOpen: Dispatch<SetStateAction<boolean>>;
   onClick: (uuid: string) => void;
   items: ExtensionMenuItem[];
 }
 
-export default function NavSection({icon: Icon, blink, name, open, setOpen, items, current, onClick}: PropsWithChildren<NavSectionProps>) {
+export default function NavSection({icon: Icon, blink, name, items, current, onClick}: PropsWithChildren<NavSectionProps>) {
+  const [open, setOpen] = useState(false);
+  const { latestAdded } = useContext(ConfigurationStoreContext)
 
-  const expandCollapse = () => setOpen(!open);
+  useEffect(() => {
+    if (items.some(item => item.uuid === latestAdded)) {
+      setOpen(true);
+    }
+  }, [latestAdded, items]);
+
+  const expandCollapse = () => {
+    setOpen(!open);
+  }
 
   return (
     <>

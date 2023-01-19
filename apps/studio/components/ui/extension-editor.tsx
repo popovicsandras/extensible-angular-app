@@ -1,12 +1,15 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
+import { useContext, useMemo } from "react";
 import validator from "@rjsf/validator-ajv8";
 import Form from "@rjsf/mui";
-import { ConfigContext } from "components/ui/config-context";
+import { ConfigurationStoreContext } from "components/ui/config-context";
+import { RJSFSchema } from "@rjsf/utils";
+import { ExtensionConfiguration, TemplateConfiguration } from "services/extension-types/interfaces";
 
 const uiSchema = {
+  uuid: {"ui:widget": "hidden"},
   displayName: {"ui:widget": "hidden"},
   remoteName: {"ui:widget": "hidden"},
   exposedModule: {"ui:widget": "hidden"},
@@ -19,25 +22,54 @@ const uiSchema = {
 
 interface ExtensionEditorProps {
   uuid: string;
-  update: Dispatch<SetStateAction<number>>
+  update: (config: Partial<ExtensionConfiguration> | Partial<TemplateConfiguration>) => void
 }
 
 export default function ExtensionEditor ({uuid, update}: ExtensionEditorProps) {
-  const config = useContext(ConfigContext);
-  console.log(config);
-  const [extensionConfig, setExtensionConfig] = useState(null);
-  const [extensionSchema, setExtensionSchema] = useState(null);
+  const state = useContext(ConfigurationStoreContext)
 
-  useEffect(() => {
-    setExtensionConfig(config.getExtensionConfig(uuid));
-    setExtensionSchema(config.getExtensionSchema(uuid));
-  }, [uuid, config]);
+  const extensionConfig = useMemo(() => {
+    let config;
+    if (state.template?.uuid === uuid) {
+      config =  state.template;
+    } else {
+      config = state.extensions[uuid];
+    }
 
-  const triggerUpdate = (form) => {
-    console.log(form);
-    config.updateExtensionConfig(uuid, form.formData.options);
-    setTimeout(() => update((value) => value + 1), 10);
-  }
+    if (!config) {
+      throw new Error(`Extension with uuid ${uuid} not found`);
+    }
+
+    return {
+      uuid: config.uuid,
+      displayName: config.package.displayName,
+      remoteName: config.package.scope + '/' + config.package.package,
+      exposedModule: config.package.exposedModules[0].moduleName,
+      componentName: config.package.exposedModules[0].componentName,
+      standalone: config.package.standalone,
+      options: config.options,
+      package: config.package
+    }
+  }, [state, uuid]);
+
+  const extensionSchema: RJSFSchema = useMemo(() => {
+    if (!extensionConfig) return null;
+
+    return {
+      type: "object",
+      properties: {
+        uuid: {type: "string"},
+        displayName: {type: "string"},
+        remoteName: {type: "string"},
+        exposedModule: {type: "string"},
+        componentName: {type: "string"},
+        standalone: {type: "boolean"},
+        options: {
+          ...extensionConfig.package.schema
+        }
+      }
+    }
+  }, [extensionConfig]);
 
   if (!extensionConfig || !extensionSchema) return null;
 
@@ -56,7 +88,7 @@ export default function ExtensionEditor ({uuid, update}: ExtensionEditorProps) {
             validator={validator}
             liveValidate={true}
             showErrorList={false}
-            onSubmit={triggerUpdate}
+            onChange={(form) => update(form.formData)}
             formData={extensionConfig}
           />
       </CardContent>

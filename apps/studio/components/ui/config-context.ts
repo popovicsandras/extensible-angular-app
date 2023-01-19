@@ -1,4 +1,4 @@
 import { createContext } from "react";
-import { UIConfiguration } from "services/ui-configuration";
+import { ConfigurationState } from "services/configuration.reducer";
 
-export const ConfigContext = createContext<UIConfiguration>(null);
+export const ConfigurationStoreContext = createContext<ConfigurationState>(null);
