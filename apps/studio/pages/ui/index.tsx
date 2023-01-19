@@ -14,9 +14,10 @@ import NavSection from "components/ui/nav-section";
 import ExtensionSelector from "components/ui/extension-selector";
 import { getExtensions } from "server/get-extensions";
 import { Package } from "server/store";
-import { Configuration } from "services/configuration";
+import { UIConfiguration } from "services/ui-configuration";
 import { ExtensionConfig } from "@extensible-angular-app/sdk";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import NavItem from "components/ui/nav-item";
 
 const config: ExtensionConfig = {
   "template":   {
@@ -63,9 +64,18 @@ const config: ExtensionConfig = {
 };
 
 export default function Applications({pkgs}: {pkgs: Package[]}) {
-  const configuration = new Configuration(config);
+  const configuration = useMemo(() => new UIConfiguration(), [])
+
+  useEffect(() => {
+    configuration.parse(config);
+  }, [configuration]);
+
+  const [componentsOpened, setComponentsOpened] = useState(false);
+  const [widgetsOpened, setWidgetsOpened] = useState(false);
+  const [pluginsOpened, setPluginsOpened] = useState(false);
 
   const [extension, setExtension] = useState<string | null>(null);
+  const [newlyAddedExtensionUuid, setNewlyAddedExtensionUuid] = useState<string | null>(null);
   const [template, setTemplate] = useState(configuration.getTemplate());
   const [components, setComponents] = useState(configuration.getComponents());
   const [widgets, setWidgets] = useState(configuration.getWidgets());
@@ -73,10 +83,21 @@ export default function Applications({pkgs}: {pkgs: Package[]}) {
 
   const onExtensionSelection = (pkg: Package) => {
     const newExtension = configuration.add(pkg);
-    setTemplate(configuration.getTemplate());
-    setComponents(configuration.getComponents());
-    setWidgets(configuration.getWidgets());
-    setPlugins(configuration.getPlugins());
+
+    if (pkg.type === 'template') {
+      setTemplate(configuration.getTemplate());
+    } else if (pkg.type === 'component') {
+      setComponents(configuration.getComponents());
+      setComponentsOpened(true);
+    } else if (pkg.type === 'widget') {
+      setWidgets(configuration.getWidgets());
+      setWidgetsOpened(true);
+    } else if (pkg.type === 'plugin') {
+      setPlugins(configuration.getPlugins());
+      setPluginsOpened(true);
+    }
+
+    setNewlyAddedExtensionUuid(newExtension.uuid);
     setExtension(newExtension.uuid);
   }
 
@@ -95,10 +116,10 @@ export default function Applications({pkgs}: {pkgs: Package[]}) {
           <CardContent>
             <ExtensionSelector packages={pkgs} onClick={onExtensionSelection} />
             <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} component="nav">
-              <NavSection title={template.title ?? "Template"} Icon={TableChartIcon} uuid={template.uuid} />
-              <NavSection title="Routes" Icon={AltRouteIcon} items={components} />
-              <NavSection title="Widgets" Icon={WidgetsIcon} items={widgets} />
-              <NavSection title="Plugins" Icon={SettingsInputComponentIcon} items={plugins} />
+              <NavItem blink={newlyAddedExtensionUuid} name="Template" icon={TableChartIcon} uuid={template.uuid} />
+              <NavSection blink={newlyAddedExtensionUuid} open={componentsOpened} setOpen={setComponentsOpened} name="Routes" icon={AltRouteIcon} items={components} />
+              <NavSection blink={newlyAddedExtensionUuid} open={widgetsOpened} setOpen={setWidgetsOpened} name="Widgets" icon={WidgetsIcon} items={widgets} />
+              <NavSection blink={newlyAddedExtensionUuid} open={pluginsOpened} setOpen={setPluginsOpened} name="Plugins" icon={SettingsInputComponentIcon} items={plugins} />
             </List>
           </CardContent>
         </Card>
