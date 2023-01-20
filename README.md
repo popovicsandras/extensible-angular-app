@@ -2,37 +2,39 @@
 
 ## Criterias
 
-- [x] Being able to provide custom template
-  - [x] Being able to customize system level routes, like 403, 404
-- [ ] Being able to package static assets as well in the extensions (images, styles, fonts)
+- [ ] Extensions must be well encapsulated: being able to package static assets as well in the extensions (images, styles, fonts)
   - [x] Being able to server those in local dev mode
   - [x] Being able to server those in prod mode
   - [ ] Being able to server those in preview mode
 - [x] Share services via injection token from an EDK
-- [x] Routed components as extensions
-  - [x] As angular modules
-  - [x] As angular standalone components
-  - [x] As authenticated user
-  - [x] As unauthenticated user 
-- [ ] System plugins as extensions
-- [ ] Widgets as extensions
-- [ ] Connect extensions
+- [ ] 4 type of extensions (All hail Joomla)
+  - [x] Custom templates as extensions
+    - [x] Being able to customize system level routes, like 403, 404, custom error, etc...
+  - [x] Routed components as extensions
+    - [x] As angular modules
+    - [x] As angular standalone components
+    - [x] As authenticated user
+    - [x] As unauthenticated user 
+  - [ ] System plugins as extensions
+  - [ ] Widgets as extensions
+- [ ] Extensions interoperability
   - [ ] exposed slots
   - [ ] exposed services?
   - [ ] exposed interfaces?
-- [x] Nextjs market for demoing
+- [x] Extension Store for demoing
   - [x] List
   - [x] Upload
-- [ ] Demo Nextjs for demoing
+- [ ] Studio for demoing
   - [x] Configure app from list of extensions
   - [x] Read extension schema and show editable form
   - [ ] Demonstrate with multiple UIs
-  - [ ] Publish saved artefacts under ui id
-  - [ ] Persist extension configuration
+  - [x] Publish saved configuration under ui uuid
+  - [ ] Publish manifest for saved configuration under ui uuid
+  - [x] Persist extension configuration
   - [ ] Build production mode
+- [x] Assembling in compilation time, docker image creation
 - [ ] Trying to use anything else than Material?
 - [ ] What about different angular versions?
-- [x] Assembling in compilation time, docker image creation
 - [ ] SSR
 - [ ] Trying to use a React component?
 - [ ] Differentiate between applications:

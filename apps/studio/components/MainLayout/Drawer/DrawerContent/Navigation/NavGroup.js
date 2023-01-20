@@ -56,7 +56,7 @@ const NavGroup = ({ item }) => {
         },
         body: JSON.stringify({
           title,
-          uuid,
+          uuid
         })
       });
 

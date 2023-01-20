@@ -1,5 +1,17 @@
 import { ExtensionConfiguration, TemplateConfiguration } from "./extension-types/interfaces";
 
+export interface PersistedConfigurationState {
+  title: string;
+  uuid: string;
+  template: Partial<TemplateConfiguration> | null;
+  extensions: {[key: string]: Partial<ExtensionConfiguration>};
+}
+
+interface ResetAction {
+  type: "reset";
+  payload: PersistedConfigurationState
+}
+
 interface AddAction {
   type: "add";
   payload: Partial<ExtensionConfiguration> | Partial<TemplateConfiguration>;
@@ -15,16 +27,26 @@ interface SelectAction {
   payload: string;
 }
 
-export interface ConfigurationState {
+export interface ConfigurationState extends PersistedConfigurationState {
   selected: string | null;
   latestAdded: string | null;
-  loaded: boolean;
-  template: Partial<TemplateConfiguration> | null;
-  extensions: {[key: string]: Partial<ExtensionConfiguration>};
 }
 
-export const configurationReducer = (state: ConfigurationState, action: AddAction | SelectAction | UpdateAction) => {
+export const getInitialState = (data?: PersistedConfigurationState): ConfigurationState => ({
+  title: data?.title ?? null,
+  uuid: data?.uuid ?? null,
+  selected: null,
+  latestAdded: null,
+  template: data?.template ?? null,
+  extensions: data?.extensions ?? {}
+});
+
+export const configurationReducer = (state: ConfigurationState, action: AddAction | SelectAction | UpdateAction | ResetAction) => {
   switch (action.type) {
+    case 'reset': {
+      return getInitialState(action.payload);
+    } break;
+
     case 'add': {
       const { type } = action.payload;
       if (type === 'template') {

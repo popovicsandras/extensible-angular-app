@@ -1,6 +1,6 @@
-import { useReducer } from "react";
+import { useCallback, useReducer } from "react";
 import { Package } from "server/store";
-import { configurationReducer } from "./configuration.reducer";
+import { configurationReducer, getInitialState, PersistedConfigurationState } from "./configuration.reducer";
 import { createComponentConfig } from "./extension-types/component";
 import { ExtensionConfiguration, TemplateConfiguration } from "./extension-types/interfaces";
 import { createPluginConfig } from "./extension-types/plugin";
@@ -14,16 +14,10 @@ const extensionFactoryMap = {
   plugin: createPluginConfig
 };
 
-const initialState = {
-  selected: null,
-  latestAdded: null,
-  loaded: false,
-  template: null,
-  extensions: {}
-};
+const initialState = getInitialState();
 
 export default function useConfiguration() {
-  const [state, dispatch] = useReducer(configurationReducer, initialState as typeof initialState);
+  const [state, dispatch] = useReducer(configurationReducer, initialState);
 
   const add = (pkg: Package) => {
     const extension = extensionFactoryMap[pkg.type](pkg);
@@ -38,10 +32,15 @@ export default function useConfiguration() {
     dispatch({ type: "select", payload: uuid });
   };
 
+  const reset = useCallback((data: PersistedConfigurationState) => {
+    dispatch({ type: "reset", payload: data });
+  }, [dispatch]);
+
   return {
     state,
     add,
     update,
-    select
+    select,
+    reset
   }
 }
