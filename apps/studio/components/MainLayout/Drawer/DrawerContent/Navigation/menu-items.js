@@ -78,10 +78,18 @@ const menuItems = {
             },
             {
                 id: 'project-5',
-                title: 'Ui Designer',
-                type: 'item',
-                url: '/ui',
-                icon: WebIcon
+                title: 'UI Configurations',
+                type: 'collapse',
+                icon: WebIcon,
+                children: [
+                  {
+                      id: 'retekI',
+                      title: 'Kacsa',
+                      type: 'item',
+                      url: '/ui',
+                      icon: WebIcon,
+                  }
+              ]
             },
             {
                 id: 'project-6',

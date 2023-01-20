@@ -4,11 +4,13 @@ import Link from 'next/link';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Chip, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
+import { Chip, ListItemButton, ListItemIcon, ListItemText, Typography, IconButton } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import WebIcon from '@mui/icons-material/Web';
 
 // ==============================|| NAVIGATION - LIST ITEM ||============================== //
 
-const NavItem = ({ item, level }) => {
+const NavItem = ({ item, level, onClick, onAdd }) => {
     const theme = useTheme();
     const drawerOpen = true;
 
@@ -17,19 +19,20 @@ const NavItem = ({ item, level }) => {
         itemTarget = '_blank';
     }
 
-    let listItemProps = { component: forwardRef(function Sanyi(props, ref) {
-      return <Link ref={ref} {...props} href={item.url} />;
-    }) };
+    let listItemProps = item.type === 'collapse' ? {
+        component: 'span',
+        onClick: onClick
+      } : {
+        component: forwardRef(function Sanyi(props, ref) {
+          return <Link ref={ref} {...props} href={item.url} />;
+        })
+      };
     if (item?.external) {
         let listItemProps = { component: 'a', href: item.url, target: itemTarget };
     }
 
-    const itemHandler = (id) => {
-        console.log(id)
-    };
-
     const Icon = item.icon;
-    const itemIcon = item.icon ? <Icon style={{ fontSize: drawerOpen ? '1.25rem' : '1.15rem', position: 'relative', top: '-1px', marginRight: '16px' }} /> : false;
+    const itemIcon = item.icon ? <Icon style={{ fontSize: drawerOpen ? '1.25rem' : '1.15rem', position: 'relative', top: '-1px', marginRight: '16px' }} /> : <WebIcon style={{ fontSize: drawerOpen ? '1.25rem' : '1.15rem', position: 'relative', top: '-1px', marginRight: '16px' }}  />;
 
     const isSelected = false;
 
@@ -40,7 +43,6 @@ const NavItem = ({ item, level }) => {
         <ListItemButton
             {...listItemProps}
             disabled={item.disabled}
-            onClick={() => itemHandler(item.id)}
             selected={isSelected}
             sx={{
                 zIndex: 1201,
@@ -108,6 +110,11 @@ const NavItem = ({ item, level }) => {
                         </Typography>
                     }
                 />
+            )}
+            {item.type === 'collapse' && (
+              <IconButton aria-label="delete" size="small" onClick={onAdd}>
+                <AddIcon fontSize="small" />
+              </IconButton>
             )}
             {(drawerOpen || (!drawerOpen && level !== 1)) && item.chip && (
                 <Chip

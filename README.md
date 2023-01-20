@@ -24,8 +24,10 @@
   - [x] List
   - [x] Upload
 - [ ] Demo Nextjs for demoing
-  - [ ] Configure app from list of extensions
-  - [ ] Read extension schema and show editable form
+  - [x] Configure app from list of extensions
+  - [x] Read extension schema and show editable form
+  - [ ] Demonstrate with multiple UIs
+  - [ ] Publish saved artefacts under ui id
   - [ ] Persist extension configuration
   - [ ] Build production mode
 - [ ] Trying to use anything else than Material?

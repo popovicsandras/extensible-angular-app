@@ -18,6 +18,11 @@ export interface Package {
 }
 
 export function getStorePath() {
-  const appPrefix = '.extension-repository-store';
-  return join(process.cwd(), appPrefix)
+  const storeDir = '.extension-repository-store';
+  return join(process.cwd(), storeDir)
+}
+
+export function getConfigPath() {
+  const configDir = '.configs';
+  return join(process.cwd(), configDir)
 }

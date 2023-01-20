@@ -16,6 +16,7 @@ const uiSchema = {
   componentName: {"ui:widget": "hidden"},
   standalone: {"ui:widget": "hidden"},
   "ui:submitButtonOptions": {
+    "norender": true,
     submitText: "Update"
   }
 };
@@ -74,7 +75,7 @@ export default function ExtensionEditor ({uuid, update}: ExtensionEditorProps) {
   if (!extensionConfig || !extensionSchema) return null;
 
   return (
-    <Card sx={{ flex: '1 0 auto', overflow: 'auto' }} >
+    <Card sx={{ flex: '1 0 auto', overflow: 'auto', maxWidth: 'calc(100% - 400px)' }} >
       <CardContent>
         <Typography variant="h3">
           {extensionConfig.displayName}

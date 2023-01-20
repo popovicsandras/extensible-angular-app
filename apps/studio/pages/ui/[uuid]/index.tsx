@@ -29,7 +29,7 @@ export default function UiDesigner({pkgs}: {pkgs: Package[]}) {
             <Typography variant="h4" css={{ lineHeight: '40px'}}>UI Designer</Typography>
           </div>
         </Grid>
-        <Grid item sx={{display: 'flex', gap: '12px', width: '100%', minHeight: 'calc(100vh - 160px)', maxHeight: 'calc(100vh - 160px)'}}>
+        <Grid item sx={{display: 'flex', gap: '12px', maxWidth: '100%', minHeight: 'calc(100vh - 160px)', maxHeight: 'calc(100vh - 160px)'}}>
           <Card sx={{ minWidth: 350, overflow: 'auto' }} >
             <CardContent>
               <ExtensionSelector packages={pkgs} onClick={add} />
