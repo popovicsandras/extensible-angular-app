@@ -7,18 +7,15 @@ import {
 } from '@extensible-angular-app/sdk';
 import { BaseAppModule } from '@extensible-angular-app/sdk';
 
-import { ProductionBuildModule } from './production-build.module';
-import { environment } from '../environments/environment';
 import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
   imports: [
     BaseAppModule,
-    CommonModule,
-    ...(environment.production ? [ ProductionBuildModule ] : [ ])
+    CommonModule
   ],
-  selector: 'extensible-app-root',
+  selector: 'preview',
   template: `<ng-template slot="template"></ng-template>`,
 })
 export class AppComponent implements OnInit {

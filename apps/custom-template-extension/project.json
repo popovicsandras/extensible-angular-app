@@ -73,7 +73,6 @@
       "defaultConfiguration": "production",
       "dependsOn": ["^build", "prebuild"]
     },
-
     "serve": {
       "executor": "@nrwl/angular:webpack-dev-server",
       "configurations": {

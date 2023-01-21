@@ -1,0 +1,71 @@
+{
+  "name": "preview",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/preview/src",
+  "prefix": "extensible-app",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/preview",
+        "index": "apps/preview/src/index.html",
+        "main": "apps/preview/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/preview/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/preview/src/favicon.ico", "apps/preview/src/assets"],
+        "styles": ["apps/preview/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "preview:build:production",
+          "port": 3001
+        },
+        "development": {
+          "browserTarget": "preview:build:development",
+          "port": 3001
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "preview:build"
+      }
+    }
+  },
+  "tags": []
+}

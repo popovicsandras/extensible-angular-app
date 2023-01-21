@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
-  imports: [ RouterModule],
+  imports: [ RouterModule ],
   // eslint-disable-next-line
   selector: 'default-app-template',
   template: `<router-outlet></router-outlet>`
