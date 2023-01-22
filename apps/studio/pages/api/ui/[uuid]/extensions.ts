@@ -8,7 +8,7 @@ export default function handler(req, res) {
   const { uuid } = req.query;
   const configJson = JSON.parse(readFileSync(resolve(getConfigPath(), `${uuid}.json`), 'utf8'));
 
-  const result = Object.values(configJson.extensions)
+  const result = Object.values(configJson.extensions || [])
     .reduce((acc: Record<string, any>, extension: any) => {
       const packageName = extension.package.scope + '/' + extension.package.package;
       return {

@@ -11,7 +11,7 @@ export function loadExtensionsFactory(extensionsLoaderService: ExtensionsLoaderS
   return () => extensionsLoaderService.load();
 }
 
-declare const CONFIG_ID: string;
+declare const CONFIG_ENDPOINT: string;
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +25,7 @@ export class ExtensionsLoaderService {
   ) {}
 
   load(): Observable<any> {
-    // return this.httpClient.get(`http://localhost:4000/api/ui/${CONFIG_ID}/config`)
-    return this.httpClient.get("config/application.json")
+    return this.httpClient.get(CONFIG_ENDPOINT)
       .pipe(
          switchMap((config) => from(this.loadRemoteModule(config as ExtensionConfig)))
       );

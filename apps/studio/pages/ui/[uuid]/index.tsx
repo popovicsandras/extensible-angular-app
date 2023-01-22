@@ -72,7 +72,7 @@ export default function UiDesigner({pkgs, config}: {pkgs: Package[], config: any
               <Typography variant="h4" css={{ lineHeight: '40px'}}>UI Designer: {state.title} ({state.uuid})</Typography>
             </div>
             <div css={{display: 'flex', gap: '12px'}}>
-              <Button variant="contained" color="primary" onClick={() => window.open(`/api/ui/${state.uuid}/extensions`, '_blank')}>
+              <Button variant="contained" color="primary" onClick={() => window.open(`http://localhost:3000/${state.uuid}`, '_blank')}>
                 <VisibilityIcon />
               </Button>
               <Button variant="contained" color="secondary" onClick={() => window.open(`/api/ui/${state.uuid}/config`, '_blank')}>

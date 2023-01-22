@@ -9,10 +9,10 @@ export default function handler(req, res) {
   const configJson = JSON.parse(readFileSync(resolve(getConfigPath(), `${uuid}.json`), 'utf8'));
 
   const result = {
-    template: sanitiseExtension(configJson.template),
-    components: Object.values(configJson.extensions).filter((extension: any) => extension.type === 'component').map(sanitiseExtension),
-    widgets: Object.values(configJson.extensions).filter((extension: any) => extension.type === 'widget').map(sanitiseExtension),
-    plugins: Object.values(configJson.extensions).filter((extension: any) => extension.type === 'plugin').map(sanitiseExtension),
+    template: configJson.template ? sanitiseExtension(configJson.template) : null,
+    components: Object.values(configJson.extensions ?? []).filter((extension: any) => extension.type === 'component').map(sanitiseExtension),
+    widgets: Object.values(configJson.extensions ?? []).filter((extension: any) => extension.type === 'widget').map(sanitiseExtension),
+    plugins: Object.values(configJson.extensions ?? []).filter((extension: any) => extension.type === 'plugin').map(sanitiseExtension),
   }
 
   enbleCors(req, res);

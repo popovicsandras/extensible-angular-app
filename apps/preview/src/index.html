@@ -6,11 +6,40 @@
     <base href="%BASE_HREF%" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+      .loader {
+        position: absolute;
+        top: calc(50% - 24px);
+        left: calc(50% - 24px);
+        width: 48px;
+        height: 48px;
+        border: 5px solid #000;
+        border-bottom-color: transparent;
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+        }
+
+        @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+      }
+    </style>
   </head>
   <body>
-    <preview></preview>
+    <preview><div class="loader"></div></preview>
   </body>
   <script type="text/javascript">
-    const CONFIG_ID = '%CONFIG_ID%';
+    const EXTENSIONS_ENDPOINT = '%EXTENSIONS_ENDPOINT%';
+    const CONFIG_ENDPOINT = '%CONFIG_ENDPOINT%';
+    // const config_id = '6ca069f2';
+    // const EXTENSIONS_ENDPOINT = `http://localhost:4000/api/ui/${config_id}/extensions`;
+    // const CONFIG_ENDPOINT = `http://localhost:4000/api/ui/${config_id}/config`;
   </script>
 </html>

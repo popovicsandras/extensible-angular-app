@@ -5,13 +5,13 @@ import { Box, List, Typography, Collapse } from '@mui/material';
 
 import { useReducer, useState, Fragment, useContext } from 'react';
 import NavItem from './NavItem';
-import { uniqueNamesGenerator, starWars } from 'unique-names-generator';
+import { uniqueNamesGenerator, colors, animals } from 'unique-names-generator';
 import { ConfigContext } from 'components/configs-context';
 
 const customConfig = {
-  dictionaries: [starWars],
+  dictionaries: [colors, animals],
   separator: '-',
-  length: 1,
+  length: 2,
 };
 
 export function generateRandomName() {
