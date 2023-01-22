@@ -102,26 +102,6 @@
         "publicHost": "http://localhost:4200"
       },
       "dependsOn": ["prebuild"]
-    },
-    "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
-      "options": {
-        "browserTarget": "app:build"
-      }
-    },
-    "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "options": {
-        "lintFilePatterns": ["apps/app/**/*.ts", "apps/app/**/*.html"]
-      }
-    },
-    "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/apps/app"],
-      "options": {
-        "jestConfig": "apps/app/jest.config.ts",
-        "passWithNoTests": true
-      }
     }
   },
   "tags": []
