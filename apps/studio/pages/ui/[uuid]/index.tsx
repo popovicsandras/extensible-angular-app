@@ -89,7 +89,7 @@ export default function UiDesigner({pkgs, config}: {pkgs: Package[], config: any
             </div>
           </div>
         </Grid>
-        <Grid item sx={{display: 'flex', gap: '12px', maxWidth: '100%', minHeight: 'calc(100vh - 160px)', maxHeight: 'calc(100vh - 160px)'}}>
+        <Grid item sx={{display: 'flex', flex: '1 0 auto', gap: '12px', maxWidth: '100%', minHeight: 'calc(100vh - 160px)', maxHeight: 'calc(100vh - 160px)'}}>
           <Card sx={{ minWidth: 350, overflow: 'auto' }} >
             <CardContent>
               <ExtensionSelector packages={pkgs} onClick={add} />
@@ -100,7 +100,7 @@ export default function UiDesigner({pkgs, config}: {pkgs: Package[], config: any
         </Grid>
       </Grid>
       <StyledSnackbar open={open} autoHideDuration={5000} onClose={handleClose}>
-        Hello World
+        Succesfully saved!
       </StyledSnackbar>
     </ConfigurationStoreContext.Provider>
   );

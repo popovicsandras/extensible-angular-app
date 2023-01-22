@@ -48,13 +48,13 @@ export const configurationReducer = (state: ConfigurationState, action: AddActio
     } break;
 
     case 'add': {
-      const { type } = action.payload;
+      const { type } = action.payload.package;
       if (type === 'template') {
         return {
           ...state,
           selected: action.payload.uuid,
           latestAdded: action.payload.uuid,
-          template: action.payload
+          template: action.payload as Partial<TemplateConfiguration>
         };
       }
       return {
@@ -63,14 +63,14 @@ export const configurationReducer = (state: ConfigurationState, action: AddActio
         latestAdded: action.payload.uuid,
         extensions: {
           ...state.extensions,
-          [action.payload.uuid]: action.payload
+          [action.payload.uuid]: action.payload  as Partial<ExtensionConfiguration>
         }
       };
     } break;
 
     // Template needs to be taken care of separately
     case "update": {
-      const { type } = action.payload;
+      const { type } = action.payload.package;
       if (type === 'template') {
         return {
           ...state,
@@ -78,7 +78,7 @@ export const configurationReducer = (state: ConfigurationState, action: AddActio
             ...state.template,
             options: {
               ...state.template.options,
-              ...action.payload
+              ...action.payload.options
             }
           }
         };
@@ -91,7 +91,7 @@ export const configurationReducer = (state: ConfigurationState, action: AddActio
           [action.payload.uuid]: {
             ...state.extensions[action.payload.uuid],
             options: {
-              // ...state.extensions[action.payload.uuid].options,
+              ...state.extensions[action.payload.uuid].options,
               ...action.payload.options
             }
           }

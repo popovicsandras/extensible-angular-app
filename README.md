@@ -27,9 +27,9 @@
 - [ ] Studio for demoing
   - [x] Configure app from list of extensions
   - [x] Read extension schema and show editable form
-  - [ ] Demonstrate with multiple UIs
+  - [x] Demonstrate with multiple UIs
   - [x] Publish saved configuration under ui uuid
-  - [ ] Publish manifest for saved configuration under ui uuid
+  - [x] Publish manifest for saved configuration under ui uuid
   - [x] Persist extension configuration
   - [ ] Build production mode
 - [x] Assembling in compilation time, docker image creation

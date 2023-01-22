@@ -23,23 +23,28 @@
       "type": "object",
       "properties": {
         "protected": {
+          "title": "Requires authentication",
           "type": "boolean",
           "default": false
         },
         "route": {
+          "title": "Route path",
           "type": "string",
           "description": "The route path the component will be mounted on.",
           "message": "Route must be specified for ROUTED components."
         },
         "title": {
+          "title": "Title",
           "type": "string",
           "description": "The title of the navigational item pointing to the routed component."
         },
         "icon": {
+          "title": "Icon",
           "type": "string",
           "description": "The icon of the navigational item pointing to the routed component."
         },
         "processCategory": {
+          "title": "Process category",
           "type": "string"
         }
       },
