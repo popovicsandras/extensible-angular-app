@@ -9,7 +9,7 @@
     "build": "nx build",
     "test": "nx test",
     "build-preview": "docker build -t preview-app -f ./apps/preview/Dockerfile .",
-    "start-preview": "docker run --name preview -p 3000:80 preview-app"
+    "start-preview": "docker run --network=my-network --name preview -p 3000:3000 preview-app"
   },
   "private": true,
   "dependencies": {

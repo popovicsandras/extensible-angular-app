@@ -8,9 +8,13 @@ export default function handler(req, res) {
 
   // Hello OS filesystem security... 🤣
   const path = resolve(getStorePath(), scope, extension, 'mf', file);
+  const assetPath = resolve(getStorePath(), scope, extension, 'assets', file);
   if (existsSync(path)) {
     enbleCors(req, res);
     res.status(200).sendFile(path);
+  } else if (existsSync(assetPath)) {
+    enbleCors(req, res);
+    res.status(200).sendFile(assetPath);
   } else {
     res.status(404).end();
   }
