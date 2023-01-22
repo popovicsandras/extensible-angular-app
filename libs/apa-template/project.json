@@ -1,0 +1,33 @@
+{
+  "name": "apa-template",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/apa-template/src",
+  "prefix": "extensible-app",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/apa-template/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/apa-template/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/apa-template/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "package": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc ./libs/apa-template/assets/index.ts --outDir ./dist/libs/apa-template/assets"
+      },
+      "dependsOn": ["build"]
+    }
+  },
+  "tags": []
+}

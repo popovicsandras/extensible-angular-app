@@ -1,0 +1,47 @@
+{
+  "name": "@extensible-angular-app/apa-template",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^15.0.0",
+    "@angular/core": "^15.0.0",
+    "@extensible-angular-app/sdk": "^0.0.1"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0",
+    "hammerjs": "^2.0.8",
+    "@angular/flex-layout": "^14.0.0-beta.41",
+    "material-design-icons": "^3.0.1"
+  },
+  "extension": {
+    "type": "template",
+    "standalone": false,
+    "displayName": "Sirius template",
+    "exposedModules": [
+      {
+        "moduleName": "./Template",
+        "componentName": "AppTemplateComponent"
+      }
+    ],
+    "schema": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Application's title",
+          "type": "string",
+          "description": "This goes into the header. Important for SEO!",
+          "message": "Application's title must be specified"
+        },
+        "headerColor": {
+          "title": "Header color",
+          "type": "string",
+          "description": "The hex color code of the header or 'default'.",
+          "default": "default"
+        }
+      },
+      "required": [
+        "title"
+      ]
+    }
+  }
+}

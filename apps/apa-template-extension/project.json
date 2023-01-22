@@ -1,0 +1,146 @@
+{
+  "name": "apa-template-extension",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/apa-template-extension/src",
+  "prefix": "extensible-app",
+  "targets": {
+    "prebuild": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "rm -rf apps/apa-template-extension/src/assets/*",
+          "mkdir -p apps/apa-template-extension/src/assets/`node -p \"require('./libs/apa-template/package.json')\".name`",
+          "cp -R ./libs/apa-template/assets/*  apps/apa-template-extension/src/assets/`node -p \"require('./libs/apa-template/package.json')\".name`"
+        ],
+        "parallel": false
+      }
+    },
+    "build": {
+      "executor": "@nrwl/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/apa-template-extension",
+        "index": "apps/apa-template-extension/src/index.html",
+        "main": "apps/apa-template-extension/src/main.ts",
+        "polyfills": "apps/apa-template-extension/src/polyfills.ts",
+        "tsConfig": "apps/apa-template-extension/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/apa-template-extension/src/favicon.ico",
+          "apps/apa-template-extension/src/assets"
+        ],
+        "styles": ["apps/apa-template-extension/src/styles.scss"],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/apa-template-extension/webpack.config.js"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "100kb",
+              "maximumError": "200kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/apa-template-extension/src/environments/environment.ts",
+              "with": "apps/apa-template-extension/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/apa-template-extension/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production",
+      "dependsOn": ["^build", "prebuild"]
+    },
+    "serve": {
+      "executor": "@nrwl/angular:webpack-dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "apa-template-extension:build:production"
+        },
+        "development": {
+          "browserTarget": "apa-template-extension:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4204,
+        "publicHost": "http://localhost:4204"
+      },
+      "dependsOn": ["prebuild"]
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "apa-template-extension:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/apa-template-extension/**/*.ts",
+          "apps/apa-template-extension/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/apa-template-extension"],
+      "options": {
+        "jestConfig": "apps/apa-template-extension/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "serve-static": {
+      "executor": "@nrwl/angular:file-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "apa-template-extension:build",
+        "port": 4204
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "apa-template-extension:build:development"
+        },
+        "production": {
+          "buildTarget": "apa-template-extension:build:production"
+        }
+      }
+    },
+    "package": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "cp -R ./dist/apps/apa-template-extension ./dist/libs/apa-template",
+          "mv ./dist/libs/apa-template/apa-template-extension ./dist/libs/apa-template/mf",
+          "npm pack dist/libs/apa-template"
+        ],
+        "parallel": false
+      },
+      "dependsOn": ["^build", "prebuild", "build"]
+    }
+  },
+  "tags": []
+}

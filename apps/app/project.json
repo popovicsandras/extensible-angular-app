@@ -89,7 +89,8 @@
           "skipRemotes": [
             "content-extension",
             "process-extension",
-            "custom-template-extension"
+            "custom-template-extension",
+            "apa-template-extension"
           ]
         },
         "development": {

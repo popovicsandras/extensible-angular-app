@@ -1,7 +1,7 @@
 {
   "template":   {
     "displayName": "Template",
-    "remoteName": "@extensible-angular-app/custom-template",
+    "remoteName": "@extensible-angular-app/apa-template",
     "exposedModule": "./Template",
     "componentName": "AppTemplateComponent",
     "options": {
