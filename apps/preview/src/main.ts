@@ -1,26 +1,10 @@
-import { APP_INITIALIZER, importProvidersFrom } from '@angular/core';
-import { bootstrapApplication } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { setRemoteDefinitions } from '@nrwl/angular/mf';
 
-import { AppComponent } from './app/app.component';
-import { BaseAppModule, ExtensionsLoaderService, loadExtensionsFactory } from '@extensible-angular-app/sdk';
-import { appRoutes } from './app/app.routes';
+declare const CONFIG_ID: string;
 
-bootstrapApplication(AppComponent, {
-  providers: [
-    importProvidersFrom(
-      BrowserAnimationsModule,
-      RouterModule.forRoot(appRoutes, { onSameUrlNavigation: 'reload' }),
-      BaseAppModule.forRoot(),
-      HttpClientModule,
-    ),
-    {
-      provide: APP_INITIALIZER,
-      useFactory: loadExtensionsFactory,
-      multi: true,
-      deps: [ ExtensionsLoaderService ]
-    }
-  ],
-});
+fetch(`http://localhost:4000/api/ui/${CONFIG_ID}/extensions`)
+  .then((res) => res.json())
+  .then((definitions) => setRemoteDefinitions(definitions))
+  .then(() => import('./bootstrap')
+  .catch((err) => console.error(err)));
+

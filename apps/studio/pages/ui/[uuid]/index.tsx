@@ -21,7 +21,7 @@ import { type PersistedConfigurationState } from "services/configuration.reducer
 import { StyledSnackbar } from "components/ui/snackbar";
 import { SnackbarCloseReason } from "@mui/material";
 import BugReportIcon from '@mui/icons-material/BugReport';
-import Link from "next/link";
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 export default function UiDesigner({pkgs, config}: {pkgs: Package[], config: any}) {
   const [open, setOpen] = useState(false);
@@ -72,9 +72,11 @@ export default function UiDesigner({pkgs, config}: {pkgs: Package[], config: any
               <Typography variant="h4" css={{ lineHeight: '40px'}}>UI Designer: {state.title} ({state.uuid})</Typography>
             </div>
             <div css={{display: 'flex', gap: '12px'}}>
+              <Button variant="contained" color="primary" onClick={() => window.open(`/api/ui/${state.uuid}/extensions`, '_blank')}>
+                <VisibilityIcon />
+              </Button>
               <Button variant="contained" color="secondary" onClick={() => window.open(`/api/ui/${state.uuid}/config`, '_blank')}>
-                <BugReportIcon sx={{ mr: 1 }} />
-                Debug
+                <BugReportIcon />
               </Button>
               <Button variant="contained" color="error">
                 <BuildCircleIcon sx={{ mr: 1 }} />
