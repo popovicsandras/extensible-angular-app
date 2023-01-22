@@ -2,14 +2,17 @@
 
 ## Criterias
 
-- [ ] Extensions must be well encapsulated: being able to package static assets as well in the extensions (images, styles, fonts)
+- [x] Extensions must be well encapsulated: being able to package static assets as well in the extensions (images, styles, fonts)
   - [x] Being able to server those in local dev mode
   - [x] Being able to server those in prod mode
-  - [ ] Being able to server those in preview mode
+  - [x] Being able to server those in preview mode
 - [x] Share services via injection token from an EDK
 - [ ] 4 type of extensions (All hail Joomla)
-  - [x] Custom templates as extensions
+  - [ ] Custom templates as extensions
+    - [ ] Basic template
+    - [x] Custom template
     - [x] Being able to customize system level routes, like 403, 404, custom error, etc...
+    - [ ] Being able to change the sidebar side and header colour
   - [x] Routed components as extensions
     - [x] As angular modules
     - [x] As angular standalone components
@@ -31,16 +34,13 @@
   - [x] Publish saved configuration under ui uuid
   - [x] Publish manifest for saved configuration under ui uuid
   - [x] Persist extension configuration
+  - [ ] Websocket refresh on change
   - [ ] Build production mode
 - [x] Assembling in compilation time, docker image creation
 - [ ] Trying to use anything else than Material?
 - [ ] What about different angular versions?
 - [ ] SSR
 - [ ] Trying to use a React component?
-- [ ] Differentiate between applications:
-  - [ ] Extension developer sandbox
-  - [ ] Preview mode
-  - [ ] Production mode builder
 
 ## Setup
 
