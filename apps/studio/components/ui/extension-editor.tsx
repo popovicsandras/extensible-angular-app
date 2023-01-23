@@ -18,6 +18,14 @@ const uiSchema = {
   "ui:submitButtonOptions": {
     "norender": true,
     submitText: "Update"
+  },
+  "options": {
+    "position": {
+      "ui:widget": "radio"
+    },
+    "floatingSideBar": {
+      "ui:widget": "radio"
+    }
   }
 };
 

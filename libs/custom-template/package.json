@@ -54,7 +54,7 @@
             {"const": false, "title": "Nope"},
             {"const": true, "title": "Yepp"}
           ],
-          "description": "The position of the sidebar.",
+          "description": "Whether the sidebar should be detached from the corners or not.",
           "default": false
         }
       },
