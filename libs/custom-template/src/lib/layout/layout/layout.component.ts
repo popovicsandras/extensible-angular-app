@@ -39,7 +39,16 @@ import { CustomErrorComponent } from '../errors/custom-error.component';
 })
 export class AppTemplateComponent implements OnDestroy {
   @Input()
-  title!: string;
+  title = 'Unknown app';
+
+  @Input()
+  headerColor = '#1e88e5';
+
+  @Input()
+  position = true; // true = left, false = right
+
+  @Input()
+  floatingSideBar = false;
 
   mobileQuery: MediaQueryList;
 
@@ -56,6 +65,14 @@ export class AppTemplateComponent implements OnDestroy {
 
     this.applicationSlotService.set('menu', MenuComponent, {});
     this.applicationSlotService.set('403', CustomErrorComponent, { message: 'You are not authorised to access this page.', icon: 'error' });
+  }
+
+  get sidebarClass() {
+    return this.floatingSideBar ? `floating-sidebar-${this.position ? 'start' : 'end'}` : '';
+  }
+
+  get sidebarPosition() {
+    return this.position ? 'start' : 'end';
   }
 
   ngOnDestroy(): void {

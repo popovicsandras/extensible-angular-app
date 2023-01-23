@@ -22,3 +22,17 @@ a {
   color: inherit;
   text-decoration: inherit;
 }
+
+.floating-sidebar-end {
+  margin-right: 12px;
+  margin-top: 12px;
+  border-radius: 8px;
+  height: calc(100% - 24px);
+}
+
+.floating-sidebar-start {
+  margin-left: 12px;
+  margin-top: 12px;
+  border-radius: 8px;
+  height: calc(100% - 24px);
+}

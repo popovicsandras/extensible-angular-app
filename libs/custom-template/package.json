@@ -35,8 +35,27 @@
         "headerColor": {
           "title": "Header color",
           "type": "string",
-          "description": "The hex color code of the header or 'default'.",
-          "default": "default"
+          "description": "The hex color code of the header or 'default'."
+        },
+        "position": {
+          "title": "Sidenav position",
+          "type": "boolean",
+          "oneOf": [
+            {"const": true, "title": "Left"},
+            {"const": false, "title": "Right"}
+          ],
+          "description": "The position of the sidebar.",
+          "default": true
+        },
+        "floatingSideBar": {
+          "title": "Detached floating sidenav",
+          "type": "boolean",
+          "oneOf": [
+            {"const": false, "title": "Nope"},
+            {"const": true, "title": "Yepp"}
+          ],
+          "description": "The position of the sidebar.",
+          "default": false
         }
       },
       "required": [
