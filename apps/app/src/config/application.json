@@ -1,12 +1,14 @@
 {
   "template":   {
     "displayName": "Template",
-    "remoteName": "@alfresco/apa-template",
+    "remoteName": "@extensible-angular-app/custom-template",
     "exposedModule": "./Template",
     "componentName": "AppTemplateComponent",
     "options": {
       "title": "Workspace",
-      "headerColor": "default"
+      "headerColor": "#000",
+      "position": false,
+      "floatingSideBar": true
     }
   },
   "widgets": [],
