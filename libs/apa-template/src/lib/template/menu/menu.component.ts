@@ -5,16 +5,19 @@ import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { AuthenticationService, AuthenticationServiceToken, MenuItem, NavigationService, NavigationServiceToken } from '@extensible-angular-app/sdk';
 import { Observable } from 'rxjs';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   /* eslint-disable-next-line @angular-eslint/component-selector */
   selector: 'sidenav-menu',
   standalone: true,
   templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.scss'],
   imports: [
     CommonModule,
     MatIconModule,
     MatListModule,
+    MatButtonModule,
     RouterModule
   ]
 })

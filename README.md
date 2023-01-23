@@ -9,7 +9,7 @@
 - [x] Share services via injection token from an EDK
 - [ ] 4 type of extensions (All hail Joomla)
   - [ ] Custom templates as extensions
-    - [ ] Basic template
+    - [x] Basic template
     - [x] Custom template
     - [x] Being able to customize system level routes, like 403, 404, custom error, etc...
     - [ ] Being able to change the sidebar side and header colour

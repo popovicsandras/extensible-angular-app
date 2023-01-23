@@ -1,16 +1,18 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, Input, ViewEncapsulation } from '@angular/core';
 import { MatSidenavModule} from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { AppSlotDirective } from '@extensible-angular-app/sdk';
+import { ApplicationSlotService, ApplicationSlotServiceToken, AppSlotDirective } from '@extensible-angular-app/sdk';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
+import { MenuComponent } from './menu/menu.component';
 
 @Component({
   standalone: true,
   imports: [
     CommonModule,
+    MenuComponent,
     RouterModule,
     MatIconModule,
     AppSlotDirective,
@@ -27,4 +29,10 @@ import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/lega
 export class AppTemplateComponent {
   @Input()
   title!: string;
+
+  constructor(
+    @Inject(ApplicationSlotServiceToken) private applicationSlotService: ApplicationSlotService
+  ) {
+    this.applicationSlotService.set('menu', MenuComponent, {});
+  }
 }

@@ -1,29 +1,50 @@
 @use '@angular/material' as mat;
 @import 'design-tokens';
 
-// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
-//  The following line adds:
-//    1. Default typography styles for all components
-//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
-//  If you specify typography styles for the components you use elsewhere, you should delete this line.
-//  If you don't need the default component typographies but still want the hierarchy styles,
-//  you can delete this line and instead use:
-//    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
-@include mat.all-legacy-component-typographies();
-@include mat.legacy-core();
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
-$my-primary: mat.define-palette(mat.$cyan-palette, 500);
+/* fallback */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialicons/v139/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+@include mat.core();
+
+$my-primary: mat.define-palette(mat.$indigo-palette, 500);
 $my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$my-warn: mat.define-palette(mat.$red-palette);
 
-$my-theme: mat.define-dark-theme((
+$my-theme: mat.define-light-theme((
  color: (
    primary: $my-primary,
    accent: $my-accent,
- )
+   warn: $my-warn,
+ ),
+ typography: mat.define-typography-config(
+  $font-family: "Open Sans",
+ ),
+ density: 0,
 ));
 
-// Emit theme-dependent styles for common features used across multiple components.
-@include mat.all-legacy-component-themes($my-theme);
 
 body, html {
   margin: 0;
@@ -35,30 +56,8 @@ body {
   overflow: auto;
 }
 
-.mat-toolbar {
-  @include mat.elevation(8);
+@include mat.core-theme($my-theme);
+@include mat.all-component-themes($my-theme);
 
-  app-menu {
-    width: 100%;
 
-    ul {
-      list-style-type: none;
-      display: flex;
-      gap: 16px;
-      justify-content: end;
-    }
-  }
-}
 
-.mat-drawer {
-  width: 300px;
-  background-image: linear-gradient(
-    90deg,
-    hsl(201deg 100% 7%) 0%,
-    hsl(201deg 100% 6%) 29%,
-    hsl(201deg 100% 6%) 43%,
-    hsl(201deg 100% 5%) 57%,
-    hsl(201deg 100% 3%) 71%,
-    hsl(0deg 0% 0%) 100%
-  );
-}

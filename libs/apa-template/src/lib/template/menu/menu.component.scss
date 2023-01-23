@@ -1,0 +1,24 @@
+.mdc-list {
+  padding: 8px 6px;
+
+  .mat-mdc-list-item {
+    &.mdc-list-item--with-leading-icon {
+      &.mdc-list-item--with-one-line {
+        line-height: 48px;
+        height: 44px;
+      }
+
+      &.mdc-list-item--with-leading-icon .mdc-list-item__start {
+        margin-left: 16px;
+        margin-right: 8px;
+        color: rgba(0, 0, 0, .54);
+      }
+    }
+
+
+    .mdc-list-item__primary-text {
+      font-size: 14px;
+      color: rgba(0, 0, 0, .54);
+    }
+  }
+}

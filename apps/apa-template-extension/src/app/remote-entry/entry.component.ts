@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { DemoComponent } from './demo.component';
-import { AppTemplateComponent } from '@extensible-angular-app/apa-template';
+import { AppTemplateComponent } from '@alfresco/apa-template';
 import { NavigationService, NavigationServiceToken } from '@extensible-angular-app/sdk';
 
 @Component({

@@ -1,5 +1,5 @@
 {
-  "name": "@extensible-angular-app/apa-template",
+  "name": "@alfresco/apa-template",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^15.0.0",
@@ -15,7 +15,7 @@
   "extension": {
     "type": "template",
     "standalone": false,
-    "displayName": "Sirius template",
+    "displayName": "Alfresco APA template",
     "exposedModules": [
       {
         "moduleName": "./Template",
@@ -26,18 +26,6 @@
       "$schema": "http://json-schema.org/draft-04/schema#",
       "type": "object",
       "properties": {
-        "title": {
-          "title": "Application's title",
-          "type": "string",
-          "description": "This goes into the header. Important for SEO!",
-          "message": "Application's title must be specified"
-        },
-        "headerColor": {
-          "title": "Header color",
-          "type": "string",
-          "description": "The hex color code of the header or 'default'.",
-          "default": "default"
-        }
       },
       "required": [
         "title"

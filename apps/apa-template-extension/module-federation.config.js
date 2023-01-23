@@ -4,8 +4,7 @@ module.exports = {
   // During thre preview (development) mode start, we fetch remotes by the manifest.json file
   name: 'apa-template-extension',
   exposes: {
-    // './Template': 'libs/apa-template/src/lib/template/template.component.ts'
-    './Template': 'libs/apa-template/src/lib/layout/layout/layout.component'
+    './Template': 'libs/apa-template/src/lib/template/template.component.ts'
   },
   additionalShared: [
     '@angular/core',

@@ -1,15 +1,12 @@
 
-<mat-drawer-container class="example-container">
-  <mat-drawer #drawer mode="over">
-    <ng-template slot="menu"></ng-template>
-  </mat-drawer>
-  <mat-drawer-content>
-    <mat-toolbar color="primary">
-      <button mat-icon-button (click)="drawer.toggle()">
-        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="menu"></mat-icon>
-      </button>
-      {{ title }}
-    </mat-toolbar>
-    <router-outlet></router-outlet>
-  </mat-drawer-content>
-</mat-drawer-container>
+<div style="display: flex; width: 100vw;height: 100vh; flex-direction: column;">
+  <div style="background: url('assets/@alfresco/apa-template/header.png') no-repeat; height: 62px; width: 100%;"></div>
+  <div style="display: flex; flex-direction: row; flex-grow: 1; max-height: calc(100% - 62px);">
+    <div style="background: url('assets/@alfresco/apa-template/sidebar.png') #FAFAFA no-repeat; width: 320px; border-right: 1px solid #EAEAEA; border-top: 1px solid #EAEAEA; padding-top: 110px;">
+      <ng-template slot="menu"></ng-template>
+    </div>
+    <div style="border-top: 1px solid #EAEAEA; text-align: center; flex: 1 0 auto; padding-top: 12px;">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

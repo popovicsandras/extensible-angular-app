@@ -1,7 +1,7 @@
 {
   "template":   {
     "displayName": "Template",
-    "remoteName": "@extensible-angular-app/apa-template",
+    "remoteName": "@alfresco/apa-template",
     "exposedModule": "./Template",
     "componentName": "AppTemplateComponent",
     "options": {
