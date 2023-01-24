@@ -34,7 +34,7 @@
   - [x] Publish saved configuration under ui uuid
   - [x] Publish manifest for saved configuration under ui uuid
   - [x] Persist extension configuration
-  - [ ] Websocket refresh on change
+  - [x] Websocket refresh on change
   - [ ] Build production mode
 - [x] Assembling in compilation time, docker image creation
 - [ ] Trying to use anything else than Material?

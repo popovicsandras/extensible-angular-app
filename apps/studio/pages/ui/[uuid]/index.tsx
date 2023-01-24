@@ -22,6 +22,18 @@ import { StyledSnackbar } from "components/ui/snackbar";
 import { SnackbarCloseReason } from "@mui/material";
 import BugReportIcon from '@mui/icons-material/BugReport';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import io from 'Socket.IO-client'
+let socket;
+
+const socketInitializer = async () => {
+  await fetch('/api/socket/')
+  socket = io();
+
+  socket.on('connect', () => {
+    console.log('connected')
+  });
+}
+
 
 export default function UiDesigner({pkgs, config}: {pkgs: Package[], config: any}) {
   const [open, setOpen] = useState(false);
@@ -37,6 +49,10 @@ export default function UiDesigner({pkgs, config}: {pkgs: Package[], config: any
     reset(config);
   }, [config, reset])
 
+  useEffect(() => {
+    socketInitializer();
+  }, []);
+
   const save = async () => {
     const payload: PersistedConfigurationState = {
       uuid: state.uuid,
@@ -51,6 +67,7 @@ export default function UiDesigner({pkgs, config}: {pkgs: Package[], config: any
       body: JSON.stringify(payload)
     });
 
+    socket.emit('updated', state.uuid);
     console.log(result);
     setOpen(true);
   }
