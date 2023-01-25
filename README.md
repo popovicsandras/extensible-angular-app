@@ -7,7 +7,7 @@
   - [x] Being able to server those in prod mode
   - [x] Being able to server those in preview mode
 - [x] Share services via injection token from an EDK
-- [ ] 4 type of extensions (All hail Joomla)
+- [ ] 3 type of extensions (All hail Joomla)
   - [x] Custom templates as extensions
     - [x] Basic template
     - [x] Custom template
@@ -18,8 +18,7 @@
     - [x] As angular standalone components
     - [x] As authenticated user
     - [x] As unauthenticated user 
-  - [ ] System plugins as extensions
-  - [ ] Widgets as extensions
+  - [ ] Behaviours modifiers
 - [ ] Extensions interoperability
   - [ ] exposed slots
   - [ ] exposed services?
@@ -35,7 +34,7 @@
   - [x] Publish manifest for saved configuration under ui uuid
   - [x] Persist extension configuration
   - [x] Websocket refresh on change
-  - [ ] Build production mode
+  - [?] Build production mode
 - [x] Assembling in compilation time, docker image creation
 - [ ] Trying to use anything else than Material?
 - [ ] What about different angular versions?

@@ -1,0 +1,26 @@
+{
+  "name": "content-interface",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/content-interface/src",
+  "prefix": "extensible-app",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/content-interface/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/content-interface/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/content-interface/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    }
+  },
+  "tags": []
+}

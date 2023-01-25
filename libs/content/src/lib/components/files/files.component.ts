@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, Injector, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatTableDataSource} from '@angular/material/table';
 import { ApplicationSlotService, ApplicationSlotServiceToken } from '@extensible-angular-app/sdk';
@@ -49,7 +49,11 @@ export class FilesComponent implements OnInit {
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
 
-  constructor(@Inject(ApplicationSlotServiceToken) private applicationSlotService: ApplicationSlotService) {}
+  constructor(
+    @Inject(ApplicationSlotServiceToken) private applicationSlotService: ApplicationSlotService,
+    private readonly injector: Injector) {
+      console.log(injector);
+    }
 
   onContextMenu(event: MouseEvent, item: PeriodicElement) {
     event.preventDefault();

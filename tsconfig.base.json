@@ -19,15 +19,16 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@alfresco/apa-template": ["libs/apa-template/src/index.ts"],
+      "@alfresco/apa-template/*": ["libs/apa-template/*"],
       "@extensible-angular-app/content": ["libs/content/src/index.ts"],
+      "@extensible-angular-app/content-interface": [
+        "libs/content-interface/src/index.ts"
+      ],
       "@extensible-angular-app/custom-template": [
         "libs/custom-template/src/index.ts"
       ],
-      "@alfresco/apa-template": [
-        "libs/apa-template/src/index.ts"
-      ],
       "@extensible-angular-app/custom-template/*": ["libs/custom-template/*"],
-      "@alfresco/apa-template/*": ["libs/apa-template/*"],
       "@extensible-angular-app/process": ["libs/process/src/index.ts"],
       "@extensible-angular-app/sdk": ["libs/sdk/src/index.ts"]
     }
