@@ -65,6 +65,28 @@
         }
       },
       "defaultConfiguration": "development"
+    },
+    "build-docker": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "docker container inspect preview >/dev/null 2>&1 && docker container rm preview || echo 'container does not exist'",
+          "docker build --build-arg store_server_url=${EXTENSION_STORE_HOST} --build-arg store_server_port=${EXTENSION_STORE_PORT} -t preview-app -f ./apps/preview/Dockerfile ."
+        ],
+        "parallel": false
+      },
+      "dependsOn": ["build"]
+    },
+    "serve-docker": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "docker network inspect preview-network >/dev/null 2>&1 || docker network create preview-network",
+          "docker run --network=preview-network --name preview -p ${PREVIEW_PORT}:3000 preview-app"
+        ],
+        "parallel": false
+      },
+      "dependsOn": ["build-docker"]
     }
   },
   "tags": []

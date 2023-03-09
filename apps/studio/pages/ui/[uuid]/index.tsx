@@ -33,7 +33,10 @@ const socketInitializer = async () => {
   });
 }
 
-const previewHost = 'http://localhost:3000';
+declare const PREVIEW_HOST: string;
+declare const PREVIEW_PORT: string;
+
+const previewHost = `${PREVIEW_HOST}:${PREVIEW_PORT}`;
 
 export default function UiDesigner({pkgs, config}: {pkgs: Package[], config: any}) {
   const [open, setOpen] = useState(false);

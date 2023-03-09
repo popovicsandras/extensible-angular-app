@@ -49,15 +49,25 @@ npm ci --legacy-peer-deps
 
 **--legacy-peer-deps** is only needed because Angular flex layout is not supported anymore, but the demo template still uses it. Obviously, in a real life scenario a template extension would use more uptodate libraries and would be pre-packaged.
 
-## Poor man's Extension Store
+## Poor man's Studio experience
 
-Next.js served application to demonstrate an extension store. 
+Next.js served application to demonstrate the Studio experience. This so called "studio" fulfills 2 responsibilities (which were 2 separate application in production environments):
+- Solution Builder Application (studio)
+- Extension Store
+
+### Start the studio
 
 ```
 npm start studio
 ```
 
-## Poor man's Solution Builder Application 
+### Start the solution previewer
+
+Builds the preview application in prod mode, create a docker image of it and serves on the port defined in the .env file
+
+```
+npx nx run preview:serve-docker
+```
 
 ## Extensible application
 
@@ -69,10 +79,11 @@ Uses module federation
 npm start
 ```
 
-### Production mode
+### Assembled application demonstration
 
 Assembles the extensions into one application, routed modules / standalone components are loaded via angular lazy loading.
 
 ```
-npm start
+npm start -- --prod
 ```
+

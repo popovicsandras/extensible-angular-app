@@ -23,6 +23,7 @@ const menuItems = {
                 id: 'dashboard',
                 title: 'Dashboard',
                 type: 'item',
+                disabled: true,
                 url: '/',
                 icon: DashboardOutlined,
                 breadcrumbs: false
@@ -36,7 +37,7 @@ const menuItems = {
         children: [
             {
                 id: 'login1',
-                title: 'Store',
+                title: 'My extensions',
                 type: 'item',
                 url: '/store',
                 icon: LocalGroceryStoreIcon,
@@ -52,6 +53,7 @@ const menuItems = {
                 id: 'project-1',
                 title: 'Processes',
                 type: 'item',
+                disabled: true,
                 url: '/',
                 icon: MemoryIcon
             },
@@ -59,6 +61,7 @@ const menuItems = {
                 id: 'project-2',
                 title: 'Forms',
                 type: 'item',
+                disabled: true,
                 url: '/',
                 icon: FormOutlined
             },
@@ -66,6 +69,7 @@ const menuItems = {
                 id: 'project-3',
                 title: 'Connectors',
                 type: 'item',
+                disabled: true,
                 url: '/',
                 icon: ExtensionIcon
             },
@@ -73,6 +77,7 @@ const menuItems = {
                 id: 'project-4',
                 title: 'Decision tables',
                 type: 'item',
+                disabled: true,
                 url: '/',
                 icon: PsychologyIcon
             },
@@ -95,6 +100,7 @@ const menuItems = {
                 id: 'project-6',
                 title: 'Files',
                 type: 'item',
+                disabled: true,
                 url: '/',
                 icon: FileOutlined
             },
@@ -102,6 +108,7 @@ const menuItems = {
                 id: 'project-7',
                 title: 'Scripts',
                 type: 'item',
+                disabled: true,
                 url: '/',
                 icon: JavascriptIcon
             },
@@ -109,6 +116,7 @@ const menuItems = {
                 id: 'project-8',
                 title: 'Triggers',
                 type: 'item',
+                disabled: true,
                 url: '/',
                 icon: PlayCircleFilledWhiteIcon
             }

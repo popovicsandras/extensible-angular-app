@@ -2,6 +2,7 @@
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { withNx } = require('@nrwl/next/plugins/with-nx');
+const webpack = require('webpack');
 
 /**
  * @type {import('@nrwl/next/plugins/with-nx').WithNxOptions}
@@ -14,6 +15,13 @@ const nextConfig = {
   },
   webpack: (config) => {
     config.resolve.fallback = { fs: false };
+
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        "PREVIEW_HOST": JSON.stringify(process.env.PREVIEW_HOST),
+        "PREVIEW_PORT": JSON.stringify(process.env.PREVIEW_PORT)
+      })
+    );
 
     return config;
   },

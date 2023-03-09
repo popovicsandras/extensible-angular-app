@@ -19,6 +19,15 @@
         "production": {}
       }
     },
+    "pre-serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "mkdir -p .configs",
+          "mkdir -p .extension-repository-store"
+        ]
+      }
+    },
     "serve": {
       "executor": "@nrwl/next:server",
       "defaultConfiguration": "development",
@@ -36,7 +45,8 @@
           "buildTarget": "studio:build:production",
           "dev": false
         }
-      }
+      },
+      "dependsOn": ["pre-serve"]
     },
     "export": {
       "executor": "@nrwl/next:export",

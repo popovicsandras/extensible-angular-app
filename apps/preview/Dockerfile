@@ -10,9 +10,12 @@ COPY dist/apps/preview /usr/share/nginx/html/
 RUN chmod 755 /etc/nginx/nginx.default.conf
 RUN chmod 755 /usr/share/nginx/html/
 
-# ENV STORE_SERVER_URL_WITH_PORT="http://127.0.0.1:4000"
-ENV STORE_SERVER_URL_WITH_PORT="http://192.168.86.221:4000"
-RUN envsubst '${STORE_SERVER_URL_WITH_PORT}' < /etc/nginx/nginx.default.conf > /etc/nginx/nginx.conf
+ARG store_server_url
+ENV STORE_SERVER_URL $store_server_url
+ARG store_server_port
+ENV STORE_SERVER_PORT $store_server_port
+
+RUN envsubst '${STORE_SERVER_URL} ${STORE_SERVER_PORT}' < /etc/nginx/nginx.default.conf > /etc/nginx/nginx.conf
 
 USER 101
 

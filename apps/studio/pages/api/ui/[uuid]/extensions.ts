@@ -3,6 +3,8 @@ import { resolve } from "path";
 import { enbleCors } from "server/cors";
 import { getConfigPath } from "server/store";
 
+const extensionRepositoryUrl = `${process.env.EXTENSION_STORE_HOST}:${process.env.EXTENSION_STORE_PORT}`;
+
 // This is for the Preview to get the configuration of the UI
 export default function handler(req, res) {
   const { uuid } = req.query;
@@ -13,13 +15,13 @@ export default function handler(req, res) {
       const packageName = extension.package.scope + '/' + extension.package.package;
       return {
         ...acc,
-        [packageName]: `http://localhost:4000/api/extensions/${packageName}`
+        [packageName]: `${extensionRepositoryUrl}/api/extensions/${packageName}`
       };
     }, {} as Record<string, any>);
 
   if (configJson.template) {
     const packageName = configJson.template.package.scope + '/' + configJson.template.package.package;
-    result[packageName] = `http://localhost:4000/api/extensions/${packageName}`;
+    result[packageName] = `${extensionRepositoryUrl}/api/extensions/${packageName}`;
   }
 
   enbleCors(req, res);

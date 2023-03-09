@@ -7,10 +7,7 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test",
-    "build-preview": "docker build -t preview-app -f ./apps/preview/Dockerfile .",
-    "prestart-preview": "docker network inspect my-network >/dev/null 2>&1 || docker network create my-network",
-    "start-preview": "docker run --network=my-network --name preview -p 3000:3000 preview-app"
+    "test": "nx test"
   },
   "private": true,
   "dependencies": {
