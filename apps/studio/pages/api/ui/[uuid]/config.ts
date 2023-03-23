@@ -10,9 +10,7 @@ export default function handler(req, res) {
 
   const result = {
     template: configJson.template ? sanitiseExtension(configJson.template) : null,
-    components: Object.values(configJson.extensions ?? []).filter((extension: any) => extension.type === 'component').map(sanitiseExtension),
-    widgets: Object.values(configJson.extensions ?? []).filter((extension: any) => extension.type === 'widget').map(sanitiseExtension),
-    plugins: Object.values(configJson.extensions ?? []).filter((extension: any) => extension.type === 'plugin').map(sanitiseExtension),
+    components: Object.values(configJson.extensions ?? []).filter((extension: any) => extension.type === 'component').map(sanitiseExtension)
   }
 
   enbleCors(req, res);

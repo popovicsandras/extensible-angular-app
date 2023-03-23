@@ -8,7 +8,7 @@ export interface Package {
   version: string;
   cost: number;
   rating: number
-  type: "template" | "component" | "widget" | "plugin";
+  type: "template" | "component";
   standalone: boolean,
   exposedModules: {
     moduleName: string;

@@ -3,15 +3,11 @@ import { Package } from "server/store";
 import { configurationReducer, getInitialState, PersistedConfigurationState } from "./configuration.reducer";
 import { createComponentConfig } from "./extension-types/component";
 import { ExtensionConfiguration, TemplateConfiguration } from "./extension-types/interfaces";
-import { createPluginConfig } from "./extension-types/plugin";
 import { createTemplateConfig } from "./extension-types/template";
-import { createWidgetConfig } from "./extension-types/widget";
 
 const extensionFactoryMap = {
   template: createTemplateConfig,
-  component: createComponentConfig,
-  widget: createWidgetConfig,
-  plugin: createPluginConfig
+  component: createComponentConfig
 };
 
 const initialState = getInitialState();

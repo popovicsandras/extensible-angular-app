@@ -35,7 +35,7 @@ export const fakePackages: Package[] = [
     version: "0.0.9",
     cost: 9.5,
     rating: 4,
-    type: "widget",
+    type: "component",
     standalone: false,
     exposedModules: [],
     schema: {}
@@ -48,7 +48,7 @@ export const fakePackages: Package[] = [
     version: "0.6.9",
     cost: 0,
     rating: 3,
-    type: "plugin",
+    type: "component",
     standalone: false,
     exposedModules: [],
     schema: {}

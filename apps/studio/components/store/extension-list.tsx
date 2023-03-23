@@ -7,14 +7,10 @@ import { type Package } from "server/store";
 export default function ExtensionList({pkgs, onClick}: {pkgs: Package[], onClick?: (pkg: Package) => void}) {
   const template = pkgs.filter((item) => item.type === 'template');
   const components = pkgs.filter((item) => item.type === 'component');
-  const widgets = pkgs.filter((item) => item.type === 'widget');
-  const plugins = pkgs.filter((item) => item.type === 'plugin');
 
   const grouppedPackages = [
     { name: "Templates", packages: template },
-    { name: "Components", packages: components },
-    { name: "Widgets", packages: widgets },
-    { name: "Plugins", packages: plugins }
+    { name: "Plugins", packages: components }
   ];
 
   return (
